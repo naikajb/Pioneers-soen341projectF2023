@@ -1,24 +1,24 @@
-#SOEN 341
+# SOEN 341
 
-##Objective
+## Objective
 
 Develop a realestate website that enables customers to book appointments, view listings, and favorite listings. In addition, enable brokers to add, remove, and edit listings.
 
-##Team Members
+## Team Members
 
--Aman Singh
--Jacob De Luca
--Manreet Lotay
--Mohamed Bedair
--Naika Jean-Baptiste
--Seif Bedair
+- Aman Singh
+- Jacob De Luca
+- Manreet Lotay
+- Mohamed Bedair
+- Naika Jean-Baptiste
+- Seif Bedair
 
-##Technologies
+## Technologies
 
--React
--HTML
--CSS
--Java Script
--Node JS
--MongoDB*
--Rapid API
+- React
+- HTML
+- CSS
+- Java Script
+- Node JS
+- MongoDB*
+- Rapid API
