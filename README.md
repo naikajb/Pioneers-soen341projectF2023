@@ -7,14 +7,14 @@ Homebuyers and property renters are able to look through listings and search for
 
 Brokers using this website will be able to submit offers and request appointments on behalf of their clients and keep track of these offers and appointments. This platform also allows brokers to add new listings, edit them, and remove them from public view as they please (CRUD operations). Lastly, the brokers are able to manage (reschedule/cancel) the appointments that are requested from them. 
 
-## Team Members
+## Team Members and Experience
 
-- Aman Singh
-- Jacob De Luca
-- Manreet Lotay
-- Mohamed Bedair
-- Naika Jean-Baptiste
-- Seif Bedair
+- Aman Singh: 
+- Jacob De Luca: 
+- Manreet Lotay: 
+- Mohamed Bedair : 
+- Naika Jean-Baptiste : Experience in frontend with HTML,CSS and Javascript and brief experience with backend using PHP. 
+- Seif Bedair: 
 
 ## Technologies
 
