@@ -11,7 +11,7 @@ Brokers using this website will be able to submit offers and request appointment
 
 - Aman Singh: 
 - Jacob De Luca: 
-- Manreet Lotay: 
+- Manreet Lotay: Experience in HTML, CSS, Bootstrap, Node.js, Express.js and PHP
 - Mohamed Bedair : I aim to learn web development throughout the course since I have minimal experience with it. I have experience working with java, javascript, and C++ through other courses.
 - Naika Jean-Baptiste : Experience in frontend with HTML,CSS and Javascript and brief experience with backend using PHP. 
 - Seif Bedair: 
