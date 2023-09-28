@@ -26,3 +26,9 @@ Brokers using this website will be able to submit offers and request appointment
 - Express.js
 - MongoDB*
 - Rapid API
+
+## Technology Assessment 
+
+Front-End: We had to choose between React, Angular and Vue. The reason why we chose to proceed with React is because mose of our team is familiar with JavaScript, as opposed to Angular which is a TypeScript framework. Moreover, it is the most popular front-end framework. 
+
+Back-End: We had to choose between Express.js, Spring and Django. We chose to stick with Express because it is closely related to Javascript and many of our teammates are familiar with Node.js. The reason why we didn't chose Spring is because we are building a web application and we want to try something other than Java. Lastly, we didn't choose Django because we don't have much experience with Python.
