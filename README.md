@@ -9,7 +9,7 @@ Brokers using this website will be able to submit offers and request appointment
 
 ## Team Members and Experience
 
-- Aman Singh: 
+- Aman Singh: Exprience in HTML, CSS, JavaScript, Node.js and Express.js 
 - Jacob De Luca: 
 - Manreet Lotay: Experience in HTML, CSS, Bootstrap, Node.js, Express.js and PHP
 - Mohamed Bedair : I aim to learn web development throughout the course since I have minimal experience with it. I have experience working with java, javascript, and C++ through other courses.
