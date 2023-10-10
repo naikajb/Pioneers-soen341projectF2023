@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<%- include('layout.ejs') %>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title><%= listing.address %> - Real Estate Listing</title>
+  <link rel="stylesheet" href="/styles.css">
+  <script src="/scripts.js"></script>
+</head>
+<body>
+  <div class="header">
+    <div class="slideshow">
+      <!-- Add your slideshow content here -->
+      <img src="image1.jpg" alt="Image 1">
+      <img src="image2.jpg" alt="Image 2">
+      <!-- Add more images as needed -->
+    </div>
+    <h1 class="title"><%= listing.address %></h1>
+  </div>
+
+  <div class="main-content">
+    <div class="flex-container">
+      <div class="left-column">
+        <h2 class="section-title">Property Details</h2>
+        <p class="detail">Description: <%= listing.description %></p>
+        <p class="detail">Price: $<%= listing.price %></p>
+        <p class="detail">Bedrooms: <%= listing.bedrooms %></p>
+        <p class="detail">Bathrooms: <%= listing.bathrooms %></p>
+        <!-- Add more listing details as needed -->
+
+        <h2 class="section-title">Amenities</h2>
+        <ul class="amenities-list">
+          <% listing.amenities.forEach(amenity => { %>
+            <li><%= amenity %></li>
+          <% }); %>
+        </ul>
+
+
+      </div>
+
+      <div class="right-column">
+        <h2 class="section-title">Broker Details</h2>
+        <p class="detail">Name: <%= listing.broker.name %></p>
+        <p class="detail">Contact: <%= listing.broker.contact %></p>
+        <!-- Add more broker details as needed -->
+
+        <button class="cta-button" onclick="openPopup()">Book an Appointment</button>
+
+        <div id="popup" class="popup">
+          <div class="popup-content">
+            <span class="close" onclick="closePopup()">&times;</span>
+            <h2 class="section-title">Book an Appointment</h2>
+            <form>
+               <!-- Add your form fields here -->
+              <div class="form-group">
+                <label for="name">First Name:</label>
+                <input type="text" id="firstname" name="name" required>
+              </div>
+
+              <div class="form-group">
+                <label for="name">Last Name:</label>
+                <input type="text" id="lastname" name="name" required>
+              </div>
+        
+              <div class="form-group">
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" required>
+              </div>
+              
+              <div class="form-group">
+                <label for="appointmentDate">Select a date:</label>
+                <input type="date" id="appointmentDate" name="appointmentDate" required>
+              </div>
+
+              <div class="form-group">
+                <label>Select your preferred time:</label><br>
+                <label for="morning"><input type="radio" id="morning" name="time" value="morning"> Morning</label><br>
+                <label for="afternoon"><input type="radio" id="afternoon" name="time" value="afternoon"> Afternoon</label><br>
+                <label for="evening"><input type="radio" id="evening" name="time" value="evening"> Evening</label>
+              </div>
+              
+              <div class="form-group">
+                <button class="cta-button" type="submit">Submit</button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>
