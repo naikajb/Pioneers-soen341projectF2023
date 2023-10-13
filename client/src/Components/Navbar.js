@@ -2,7 +2,14 @@
 function Navbar(){
 
     return (
-        <div> <h1>This is the Navbar</h1> </div>
+        <div> 
+            <nav>
+            <a href = "index.js" class = "navbar-logo"> 
+            <img src = "/logo.png" alt = "logo" width = "50" height = "50"/>
+            </a>
+
+            </nav>
+        </div>
     )
 }
 export default Navbar;

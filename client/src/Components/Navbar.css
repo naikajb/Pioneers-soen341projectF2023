@@ -2,7 +2,16 @@
     margin: 0;
 }
 .Navbar{
-
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #1a1a1a;
+    color: white;
+    padding: 0 20px;
+    height: 60px;
+    position: fixed;
+    width: 100%;
+    z-index: 1;
    background-color: red;
    margin: 0;
 }
