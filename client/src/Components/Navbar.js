@@ -1,5 +1,6 @@
 import logo from './logo.png';
 import navIcon from './nav.png';
+import accountIcon from './61135.png';
 function Navbar(){
 
     return (
@@ -12,12 +13,15 @@ function Navbar(){
                     <h1>Company Name</h1>
                 </p>    
                 <ul>
-                    <li className='Navlinks'>Home</li>
-                    <li className='Navlinks'>Menu</li>
-                    <li className='Navlinks'>Order</li>
-                    <li className='Navlinks'>Contact</li>
+                    <li className='Navlinks'>
+                        <button> sign-in </button>
+                        <img class = "nav-icon" src = {accountIcon} alt = "logo" width = "50%" height = "50%"/>
+                    </li>
+                    <li className = 'Navlinks'> Search </li>
+                    <li className = 'Navlinks'> Sell </li>
+                    <li className = 'Navlinks'> Buy </li>
                     <a href = " ">
-                        <img class = "nav-icon" src = {navIcon} alt = "logo" width = "20%" height = "20%"/>
+                        <img class = "nav-icon" src = {navIcon} alt = "logo" width = "50%" height = "50%"/>
                     </a>
                 </ul>
         </nav>

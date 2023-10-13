@@ -45,10 +45,21 @@
     list-style: none;
     margin: 0 5%;
     padding: 0;
-    font-size: 1.5vw;
+    font-size: 1.8vw;
     font-weight: bold;
     text-decoration: none;
     color: white;
+    /* text-shadow: 1px 1px 1px black; */
+}
+
+.Navlinks button{
+    background-color: #25291C;
+    border: none;
+    color: white;
+    font-size: 1.8vw;
+    font-weight: bold;
+    text-decoration: none;
+    cursor: pointer;
     /* text-shadow: 1px 1px 1px black; */
 }
 
@@ -62,12 +73,10 @@
         margin-left: 5%;
     }
     .Navbar ul .nav-icon{
-        border: white 2px solid;
         display: block;
-        margin: 0 20% 0% 70%;
+        size: 100px 500px;
+        /* margin: 0; */
     }
-
-
 }
 /* img{
     size: 100px 500px;
