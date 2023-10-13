@@ -1,6 +1,6 @@
 import logo from './logo.png';
 import navIcon from './nav.png';
-import accountIcon from './61135.png';
+import accountIcon from './test.png';
 function Navbar(){
 
     return (
@@ -14,9 +14,9 @@ function Navbar(){
                 </p>    
                 <ul>
                     <li className='Navlinks'>
-                        <button> sign-in </button>
-                        <img class = "nav-icon" src = {accountIcon} alt = "logo" width = "50%" height = "50%"/>
+                        <button><img class = "account-icon" src = {accountIcon} alt = "logo" width = "10%" height = "10%"/> sign-in </button>
                     </li>
+                    
                     <li className = 'Navlinks'> Search </li>
                     <li className = 'Navlinks'> Sell </li>
                     <li className = 'Navlinks'> Buy </li>
