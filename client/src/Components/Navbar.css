@@ -57,11 +57,17 @@
         display: none;
     }
 
-    .Navbar ul .nav-icon{
-        display: block;
-        width: 50%;
-        padding: 0 20% 0% 50%;
+    .Navbar p{
+        font-size: 2.5vw;
+        margin-left: 5%;
     }
+    .Navbar ul .nav-icon{
+        border: white 2px solid;
+        display: block;
+        margin: 0 20% 0% 70%;
+    }
+
+
 }
 /* img{
     size: 100px 500px;
