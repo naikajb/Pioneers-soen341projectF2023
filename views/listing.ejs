@@ -4,9 +4,9 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title><%= listing.address %> - Real Estate Listing</title>
-  <link rel="stylesheet" href="/styles.css">
-  <script src="/scripts.js"></script>
+  <title><%= listings[1].Address %> - Real Estate Listing</title>
+  <link rel="stylesheet" href="/public/styles.css">
+  <script src="/public/scripts.js"></script>
 </head>
 <body>
   <div class="header">
@@ -16,22 +16,22 @@
       <img src="image2.jpg" alt="Image 2">
       <!-- Add more images as needed -->
     </div>
-    <h1 class="title"><%= listing.address %></h1>
+    <h1 class="title"><%= listings[1].Address %></h1>
   </div>
 
   <div class="main-content">
     <div class="flex-container">
       <div class="left-column">
         <h2 class="section-title">Property Details</h2>
-        <p class="detail">Description: <%= listing.description %></p>
-        <p class="detail">Price: $<%= listing.price %></p>
-        <p class="detail">Bedrooms: <%= listing.bedrooms %></p>
-        <p class="detail">Bathrooms: <%= listing.bathrooms %></p>
+        <p class="detail">Description: <%= listings[1].Description %></p>
+        <p class="detail">Price: $<%= listings[1].Price %></p>
+        <p class="detail">Bedrooms: <%= listings[1].Bedrooms %></p>
+        <p class="detail">Bathrooms: <%= listings[1].Bathrooms %></p>
         <!-- Add more listing details as needed -->
 
         <h2 class="section-title">Amenities</h2>
         <ul class="amenities-list">
-          <% listing.amenities.forEach(amenity => { %>
+          <% listings[1].amenities.forEach(amenity => { %>
             <li><%= amenity %></li>
           <% }); %>
         </ul>
@@ -41,8 +41,8 @@
 
       <div class="right-column">
         <h2 class="section-title">Broker Details</h2>
-        <p class="detail">Name: <%= listing.broker.name %></p>
-        <p class="detail">Contact: <%= listing.broker.contact %></p>
+        <p class="detail">Name: <%= listings[1].broker.name %></p>
+        <p class="detail">Contact: <%= listings[1].broker.contact %></p>
         <!-- Add more broker details as needed -->
 
         <button class="cta-button" onclick="openPopup()">Book an Appointment</button>
@@ -81,7 +81,7 @@
               </div>
               
               <div class="form-group">
-                <button class="cta-button" type="submit">Submit</button>
+                <button class="cta-button" type="submit" onclick="submitForm(event)">Submit</button>
               </div>
             </form>
           </div>
