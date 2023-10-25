@@ -1,9 +1,9 @@
-*{
+/* *{
     margin: 0;
 }
-.Navbar{
+.Navbar{ */
     /* border: black 1px solid; */
-    display: flex;
+    /* display: flex;
     color: #ffffff;
     height: 11%;
     position: fixed;
@@ -19,40 +19,40 @@
 
 .Navbar ul{
     align-items: center;
-    flex-grow: 1;
+    flex-grow: 1; */
     /* border: black 5px solid; */
-    display: flex;
+    /* display: flex;
     justify-content: right;
 }
 
 .Navbar ul .nav-icon{
     display: none;
-}
+} */
 
-.Navbar p{
+/* .Navbar p{
     align-items: center;
-    flex-grow: 1;
+    flex-grow: 1; */
     /* border: black 5px solid; */
-    display: flex;
+    /* display: flex;
     justify-content:left;
     font-size: 2vw;
-    margin-left: 5%;
+    margin-left: 5%; */
     /* text-shadow: 1px 1px 1px black; */
-}
+/* } */
 
-.Navbar li{
+/* .Navbar li{ */
     /* border: black 5px solid; */
-    list-style: none;
+    /* list-style: none;
     margin: 0 5%;
     padding: 0;
     font-size: 1.8vw;
     font-weight: bold;
     text-decoration: none;
-    color: white;
+    color: white; */
     /* text-shadow: 1px 1px 1px black; */
-}
+/* } */
 
-.Navlinks button{
+/* .Navlinks button{
     background-color: #25291C;
     padding:0%;
     border: 2px black solid;
@@ -60,11 +60,11 @@
     font-weight: bold;
     font-size: large;
     text-decoration: none;
-    cursor: pointer;
+    cursor: pointer; */
     /* text-shadow: 1px 1px 1px black; */
-}
+/* } */
 
-@media screen and (max-width: 768px) {
+/* @media screen and (max-width: 768px) {
     .Navlinks{
         display: none;
     }
@@ -75,11 +75,66 @@
     }
     .Navbar ul .nav-icon{
         display: block;
-        size: 100px 500px;
+        size: 100px 500px; */
         /* margin: 0; */
-    }
-}
+    /* }
+} */
 /* img{
     size: 100px 500px;
     border: 1px black solid;
 } */
+
+
+
+/*By manreet */
+
+/* Navbar */
+.Navbar {
+    display: flex;
+    align-items: center;
+    background-color: #25291c;
+    color: white;
+    height: 60px; /* Adjust the height as needed */
+    position: fixed;
+    width: 100%;
+    z-index: 1;
+    top: 0; /* Ensure the Navbar is fixed to the top */
+  }
+  
+  .Navbar img {
+    margin-left: 20px;
+    width: 50px; /* Adjust the width as needed */
+  }
+  
+  .Navbar ul {
+    display: flex;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    justify-content: flex-end;
+    flex-grow: 1;
+  }
+  
+  .Navbar li {
+    margin: 0 10px;
+    font-size: 18px; /* Adjust the font size as needed */
+    font-weight: bold;
+  }
+  
+  .Navlinks button {
+    background-color: #25291c;
+    padding: 0;
+    border: 2px solid black;
+    color: white;
+    font-weight: bold;
+    font-size: 16px; /* Adjust the font size as needed */
+    text-decoration: none;
+    cursor: pointer;
+  }
+  
+  @media screen and (max-width: 768px) {
+    .Navlinks {
+      display: none;
+    }
+  }
+  

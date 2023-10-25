@@ -1,7 +1,7 @@
 import React from "react";
 import Grid from "@mui/material/Grid";
 import CardItem from "./CardItem";
-import img from "./logo.png";
+import img from "./img.jpg";
 import "../App.css"
 
 

@@ -3,13 +3,18 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    margin: 0 auto; /* Center horizontally and create equal left and right margins */
-    max-width: 1200px; /* Adjust the maximum width as needed */
-    padding: 20px; 
-  }
-  
-  .features {
-    color: #574AE2;
-    background-color: pink;
+    margin: 0 auto; 
+    max-width: 1200px; 
+    padding: 80px; 
     
   }
+
+
+
+
+
+
+  
+ 
+
+  

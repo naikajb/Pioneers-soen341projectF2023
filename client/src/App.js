@@ -6,9 +6,9 @@ import './App.css';
 
 function App() {
   return (
-    <div class = "Navbar">
-      <Navbar/>
-    <CardGrid />
+    <div className="App-container">
+      <Navbar />
+      <CardGrid />
     </div>
   )
 }
