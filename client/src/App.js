@@ -2,9 +2,8 @@ import React from 'react';
 import './Components/Navbar.css';
 import Navbar from './Components/Navbar.js';
 import CardGrid from "./Components/CardGrid";
+import CardDetail from "./Components/CardDetail";
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-
-
 import './App.css';
 
 function App() {
@@ -13,6 +12,8 @@ function App() {
       <Routes>
         <Route exact path='/' element={<Navbar />} />
         <Route path = '/grid' element={<CardGrid />} />
+        <Route path="/CardDetail" element={<CardDetail />} />
+        
         </Routes>
     </Router>
     
