@@ -1,15 +1,25 @@
+*{
+  margin:0%;
+}
 
-.container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin: 0 auto; /* Center horizontally and create equal left and right margins */
-    max-width: 1200px; /* Adjust the maximum width as needed */
-    padding: 20px; 
-  }
-  
-  .features {
-    color: #574AE2;
-    background-color: pink;
-    
-  }
+.page{
+  margin-top: 0;
+  position: relative;
+  display: flex;
+}
+
+.NavBar{
+  position: sticky;
+  width: 100%;
+  height: 11%;
+}
+.editproperty{
+  position: relative;
+  top: 11%;
+  left: 0%;
+  width: 100%;
+}
+
+.container{
+  margin-top: 11%;
+}

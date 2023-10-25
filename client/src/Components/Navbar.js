@@ -10,19 +10,21 @@ function Navbar(){
             <img class = "Navbar-logo" src = {logo} alt = "logo" width = "100%" height = "100%"/> 
             </div>
                 <p className='companyName'> 
-                    <h1>Company Name</h1>
+                    <h1>Pioneers</h1>
                 </p>    
-                <ul>
-                    <li className='Navlinks'>
-                        <button><img class = "account-icon" src = {accountIcon} alt = "logo" width = "10%" height = "10%"/> sign-in </button>
-                    </li>
-                    
+                <ul> 
                     <li className = 'Navlinks'> Search </li>
                     <li className = 'Navlinks'> Sell </li>
                     <li className = 'Navlinks'> Buy </li>
                     <a href = " ">
-                        <img class = "nav-icon" src = {navIcon} alt = "logo" width = "50%" height = "50%"/>
+                        <img className = "nav-icon" src = {navIcon} alt = "logo" width = "50%" height = "50%"/>
                     </a>
+                    <li className='Navlinks'>
+                    <a href = " ">
+                        <img className = "account-icon" src = {accountIcon} alt = "account icon"/>
+                    </a>    
+                    {/*<button><img class = "account-icon" src = {accountIcon} alt = "logo" width = "10%" height = "10%"/> sign-in </button> */}
+                </li>
                 </ul>
         </nav>
         
