@@ -1,5 +1,4 @@
 import React from "react";
-import Grid from "@mui/material/Grid";
 import CardItem from "./CardItem";
 import img from "./img.jpg";
 import "../App.css"
@@ -59,11 +58,9 @@ const cardData = [
 function CardGrid() {
   return (
     <div className="container">
-      <Grid container spacing={2}>
         {cardData.map((data, index) => (
           <CardItem key={index} data={data} />
         ))}
-      </Grid>
     </div>
   );
 }

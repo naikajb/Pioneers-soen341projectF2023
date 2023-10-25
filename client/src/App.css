@@ -1,20 +1,27 @@
 
-.container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin: 0 auto; 
-    max-width: 1200px; 
-    padding: 80px; 
-    
-  }
-
   .propertyItem:hover {
     transform: scale(1.02); /* Increase the size by 5% on hover */
     transition: transform 0.3s ease;
+    box-shadow: 10px 10px 30px rgba(0, 0, 0, 0.1);
   }
 
+  .container {
+    padding: 3em;
+    display: grid;
+    grid-gap: 2em;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    justify-content: center;
+    align-items: center;
+  }
 
+  .favorite {
+    transition: transform 0.2s ease-in-out;
+  }
+  
+  .favorite:hover {
+    transform: scale(1.5); 
+  }
+  
 
 
 
