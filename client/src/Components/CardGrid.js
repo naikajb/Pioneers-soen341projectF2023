@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import CardItem from "./CardItem";
 import img from "./img.jpg";
 import "../App.css"
@@ -52,17 +52,68 @@ const cardData = [
     address: "1455 Blvd. De Maisonneuve Ouest",
     bedroom: 4,
     bathroom: 3
+  },
+  {
+    id: 7,
+    image: img,
+    price: "$950,000",
+    address: "1455 Blvd. De Maisonneuve Ouest",
+    bedroom: 2,
+    bathroom: 3
+  },
+  {
+    id: 8,
+    image: img,
+    price: "$229,000",
+    address: "1455 Blvd. De Maisonneuve Ouest",
+    bedroom: 2,
+    bathroom: 1
   }
 ];
 
 function CardGrid() {
-  return (
+ 
+  const [favorites, setFavorites] = useState([]); // Store favorite card IDs
+  const [showFavorites, setShowFavorites] = useState(false);
+
+  // Function to toggle favorites
+  const toggleFavorite = (id) => {
+    if (favorites.includes(id)) {
+      // Remove from favorites if already favorited
+      setFavorites(favorites.filter((favorite) => favorite !== id));
+    } else {
+      // Add to favorites if not already favorited
+      setFavorites([...favorites, id]);
+    }
+  };
+
+  //Filter card data based on favorited CardItem
+  const favoriteCardData = cardData.filter((data) => favorites.includes(data.id));
+
+  // if showFavorites is true, display favorited CardItem, if not display all CardItem
+  const displayData = showFavorites ? favoriteCardData : cardData;
+
+   return (
     <div className="container">
         {cardData.map((data, index) => (
           <CardItem key={index} data={data} />
         ))}
     </div>
   );
+
+  // return (
+  //   <div>
+  //     <button className="favBtn" onClick={() => setShowFavorites(!showFavorites)}>
+  //       {showFavorites ? "All Listings" : "Saved Listings"}
+  //     </button>
+  //   <div className="container">
+  //     {displayData.map((data, index) => (
+  //       <CardItem key={index} data={data} toggleFavorite={toggleFavorite} />
+  //     ))}
+  //   </div>
+  //   </div>
+    
+  // );
 }
 
 export default CardGrid;

@@ -10,7 +10,7 @@ function App() {
   return (
     <Router>
       <Routes>
-        <Route exact path='/' element={<Navbar />} />
+        <Route exact path='/' element={<div><Navbar /> <CardGrid /></div> } />
         <Route path = '/grid' element={<CardGrid />} />
         <Route path="/CardDetail" element={<CardDetail />} />
         

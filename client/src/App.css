@@ -1,17 +1,8 @@
-
+/*CardItem*/
   .propertyItem:hover {
     transform: scale(1.02); /* Increase the size by 5% on hover */
     transition: transform 0.3s ease;
     box-shadow: 10px 10px 30px rgba(0, 0, 0, 0.1);
-  }
-
-  .container {
-    padding: 3em;
-    display: grid;
-    grid-gap: 2em;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    justify-content: center;
-    align-items: center;
   }
 
   .favorite {
@@ -19,9 +10,22 @@
   }
   
   .favorite:hover {
-    transform: scale(1.5); 
+    transform: scale(1.4); 
   }
   
+/*CardGrid*/
+  .container {
+    padding: 7em;
+    display: grid;
+    grid-gap: 2em;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    justify-content: center;
+    align-items: center;
+  }
+
+  .favBtn {
+    margin-top: 5em;
+  }
 
 
 

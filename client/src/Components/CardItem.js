@@ -12,7 +12,7 @@ import "../App.css"
 
 
 
-function CardItem({ data }) {
+function CardItem({ data, toggleFavorite  }) {
   const [isFavorite, setIsFavorite] = useState(false);
   const navigate = useNavigate(); 
 
@@ -29,6 +29,9 @@ function CardItem({ data }) {
   const handleFavoriteClick = (event) => {
     event.stopPropagation(); // Prevent favoriteIcon click affecting cardItem click
     setIsFavorite(!isFavorite);
+
+    // Pass the data.id to the parent component (CardGrid)
+  toggleFavorite(data.id);
   };
 
   return (
