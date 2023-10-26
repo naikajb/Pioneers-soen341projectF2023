@@ -1,5 +1,4 @@
 import React from 'react';
-import CardGrid from './Components/CardGrid';
 import './Components/Navbar.css';
 import Navbar from './Components/Navbar.js';
 import './App.css';

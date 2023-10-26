@@ -1,10 +1,7 @@
 import React, {Component} from 'react';
-import Popup from 'reactjs-popup';
 import 'reactjs-popup/dist/index.css';
 import Grid from "@mui/material/Grid";
 import img from "./logo.png";
-import CardItem from "./CardItem";
-import CardGrid from './CardGrid';
 import EditCard from './EditCard';
 
 const dummyListings = [
