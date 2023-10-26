@@ -1,7 +1,4 @@
-/* *{
-    margin: 0;
-}
-.Navbar{ */
+/* .Navbar{ */
     /* border: black 1px solid; */
     /* display: flex;
     color: #ffffff;
@@ -17,6 +14,10 @@
     margin-left: 20%;
 }
 
+.Navbar a img{
+    height: 10%;
+    width: 10%;
+}
 .Navbar ul{
     align-items: center;
     flex-grow: 1; */

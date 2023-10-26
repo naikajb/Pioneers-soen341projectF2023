@@ -5,6 +5,8 @@ import CardGrid from "./Components/CardGrid";
 import CardDetail from "./Components/CardDetail";
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import './App.css';
+import './Components/EditProperty.css';
+import EditPropertyView from './Components/EditPropertyView.js';
 
 function App() {
   return (
