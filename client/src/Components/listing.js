@@ -1,6 +1,14 @@
 import React, { useState } from 'react';
+import { useLocation } from "react-router-dom";
+import dummyListings from './dummyData';
 
-function ListingDetails({ listing }) {
+function ListingDetails() {
+
+  const location = useLocation();
+  const { id } = location.state || {};
+
+  const listing = dummyListings[id-1];
+
   const [isPopupOpen, setPopupOpen] = useState(false);
   const [formData, setFormData] = useState({
     firstName: '',
@@ -39,8 +47,8 @@ function ListingDetails({ listing }) {
             <h2 className="section-title">Property Details</h2>
             <p className="detail">Description: {listing.description}</p>
             <p className="detail">Price: ${listing.price}</p>
-            <p className="detail">Bedrooms: {listing.bedrooms}</p>
-            <p className="detail">Bathrooms: {listing.bathrooms}</p>
+            <p className="detail">Bedrooms: {listing.bedroom}</p>
+            <p className="detail">Bathrooms: {listing.bathroom}</p>
             {/* Add more listing details as needed */}
             
             <h2 className="section-title">Amenities</h2>

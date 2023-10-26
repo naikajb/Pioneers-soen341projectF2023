@@ -20,8 +20,7 @@ function CardItem({ data, toggleFavorite  }) {
     // Redirect to the new page and pass data using state
     navigate("/CardDetail", {
       state: {
-        id: data.id,
-        price: data.price,
+        id: data.id
       },
     });
   };

@@ -70,7 +70,7 @@ const dummyListings = [
 function EditPropertyView({data}){
 
     return(
-      <div className="container">
+      <div className="propContainer">
         <Grid container spacing={2} >
             {dummyListings.map((data, index) => (
               <EditCard key={index} data={data} />
