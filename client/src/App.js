@@ -3,14 +3,15 @@ import CardGrid from './Components/CardGrid';
 import './Components/Navbar.css';
 import Navbar from './Components/Navbar.js';
 import './App.css';
-import EditProperty from './Components/EditPropertyGrid.js';
+
 import './Components/EditProperty.css';
+import EditPropertyView from './Components/EditPropertyView.js';
 
 function App() {
   return (
     <div class = "page">
       <Navbar/ >
-      <EditProperty/ >
+      <EditPropertyView/ >
     </div>
   )
 }

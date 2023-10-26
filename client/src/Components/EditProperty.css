@@ -1,3 +1,18 @@
-.test{
-    background-color: red;
+
+.grid{ 
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    grid-gap: 20px;
+    padding: 20px;
 }
+
+.card {
+    background-color: white;
+    border: 1px solid black;
+    padding: 20px;
+  }
+  .edit-button{
+    position: absolute;
+    bottom: 0;
+    right: 0;
+  }
