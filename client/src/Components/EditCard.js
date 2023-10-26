@@ -3,9 +3,6 @@ import Grid from "@mui/material/Grid";
 import Card from "@mui/material/Card";
 import CardContent from "@mui/material/CardContent";
 import Typography from "@mui/material/Typography";
-// import Edit from './Edit';
-import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
-import { AiOutlineEdit } from 'react-icons/ai';
 import CardMedia from "@mui/material/CardMedia";
 import Button from "@mui/material/Button";
 import Popup from 'reactjs-popup';
@@ -16,7 +13,6 @@ import { DialogTitle } from '@mui/material';
 import { DialogActions } from '@mui/material';
 import { TextField } from '@mui/material';
 import { useState } from 'react';
-import { set } from 'mongoose';
 
 function Edit({ data }) {
     return (
@@ -89,9 +85,11 @@ function EditCard(props) {
     }
 
     return (
+        <Grid item xs={12} sm={6} md={4}>
         <Card>
             <CardContent className="square">
                 <CardMedia
+                    className='card-image'
                     component="img"
                     width={width}
                     image={newData.img}
@@ -116,11 +114,19 @@ function EditCard(props) {
                 <Typography variant="body2" color="text.secondary">
                     {newData.description}
                 </Typography>
+                <Typography variant="body2" color="text.secondary">
+                <h2 className="Section-detail">Amenities</h2>
+                <ul className="amenities-list">
+                    {newData.amenities.map((amenity, index) => (
+                        <li key={index}>{amenity}</li>
+                    ))}
+                </ul>
+                </Typography>
                 <div>
                     <Button onClick={handleClickOpen} className="edit-button">
                         Edit This property
                     </Button>
-                    <Dialog open={open} onClose={handleClose}>
+                    <Dialog className="" open={open} onClose={handleClose}>
                         <DialogTitle>Edit Property</DialogTitle>
                         <DialogContent>
                             <TextField
@@ -153,6 +159,8 @@ function EditCard(props) {
                                 value={newData.description}
                                 onChange={handleInputChange}
                             />
+                        
+
                         </DialogContent>
                         <DialogActions>
                             <Button onClick={handleClose}>Cancel</Button>
@@ -162,6 +170,7 @@ function EditCard(props) {
                 </div>
             </CardContent>
         </Card>
+    </Grid>
     );
 }
 

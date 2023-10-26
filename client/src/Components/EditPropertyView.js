@@ -15,7 +15,7 @@ const dummyListings = [
     address: "1455 Blvd. De Maisonneuve Ouest",
     bedroom: 3,
     bathroom: 2,
-    description: "lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eius",
+    description: "This is a description of the property. lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eius",
     amenities: ["amenity1", "amenity2", "amenity3"]
   },
   {
@@ -25,7 +25,7 @@ const dummyListings = [
     address: "1455 Blvd. De Maisonneuve Ouest",
     bedroom: 4,
     bathroom: 3,
-    description: "lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eius",
+    description: "This is a description of the property.lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eius",
     amenities: ["amenity1", "amenity2", "amenity3"]
   },
   {
@@ -55,7 +55,7 @@ const dummyListings = [
     address: "1455 Blvd. De Maisonneuve Ouest",
     bedroom: 3,
     bathroom: 2,
-    description: "This is a description of the property",
+    description: "This is a description of the property. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eius.Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eius",
     amenities: ["amenity1", "amenity2", "amenity3"]
   },
   {
@@ -65,7 +65,7 @@ const dummyListings = [
     address: "145 Blvd. De Maisonneuve Ouest",
     bedroom: 3,
     bathroom: 2,
-    description: "This is a description of the property",
+    description: "This is a description of the property. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eius.Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eius",
     amenities: ["amenity1", "amenity2", "amenity3"]
   }
 ]
@@ -73,11 +73,13 @@ const dummyListings = [
 function EditPropertyView({data}){
 
     return(
-        <Grid container spacing={2} className="grid">
+      <div className="container">
+        <Grid container spacing={2} >
             {dummyListings.map((data, index) => (
               <EditCard key={index} data={data} />
             ))}
           </Grid>
+      </div>
       
     );
 }
