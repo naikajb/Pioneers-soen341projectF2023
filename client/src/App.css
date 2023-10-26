@@ -14,7 +14,7 @@
   }
   
 /*CardGrid*/
-  .container {
+  .gridContainer {
     padding: 7em;
     display: grid;
     grid-gap: 2em;

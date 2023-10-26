@@ -93,27 +93,28 @@ function CardGrid() {
   // if showFavorites is true, display favorited CardItem, if not display all CardItem
   const displayData = showFavorites ? favoriteCardData : cardData;
 
-   return (
-    <div className="container">
-        {cardData.map((data, index) => (
-          <CardItem key={index} data={data} />
-        ))}
-    </div>
-  );
-
-  // return (
-  //   <div>
-  //     <button className="favBtn" onClick={() => setShowFavorites(!showFavorites)}>
-  //       {showFavorites ? "All Listings" : "Saved Listings"}
-  //     </button>
+  //  return (
   //   <div className="container">
-  //     {displayData.map((data, index) => (
-  //       <CardItem key={index} data={data} toggleFavorite={toggleFavorite} />
-  //     ))}
+  //       {cardData.map((data, index) => (
+  //         <CardItem key={index} data={data} />
+  //       ))}
   //   </div>
-  //   </div>
-    
   // );
+
+//View favorited listings vs all listings
+  return (
+    <div>
+      <button className="favBtn" onClick={() => setShowFavorites(!showFavorites)}>
+        {showFavorites ? "All Listings" : "Saved Listings"}
+      </button>
+    <div className="gridContainer">
+      {displayData.map((data, index) => (
+        <CardItem key={index} data={data} toggleFavorite={toggleFavorite} />
+      ))}
+    </div>
+    </div>
+    
+  );
 }
 
 export default CardGrid;
