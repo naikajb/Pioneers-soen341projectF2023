@@ -10,7 +10,7 @@ import EditPropertyView from './Components/EditPropertyView.js';
 //import { useLocation } from "react-router-dom";
 import ListingDetails from './Components/listing';
 import dummyListings from './Components/dummyData';
-import "./Components/listingDet.css";
+import './Components/listingDet.css';
 import EditCard from "./Components/EditCard";
 
 function App() {
