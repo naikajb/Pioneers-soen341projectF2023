@@ -4,14 +4,14 @@ import Navbar from './Components/Navbar.js';
 import CardGrid from "./Components/CardGrid";
 //import CardDetail from "./Components/CardDetail";
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import './styles/App.css';
+import './Components/styles/App.css';
 import './Components/styles/EditProperty.css';
 import EditPropertyView from './Components/EditPropertyView.js';
 //import { useLocation } from "react-router-dom";
 import ListingDetails from './Components/listing';
-import dummyListings from './Components/dummyData';
+//import dummyListings from './Components/dummyData';
 import './Components/styles/listingDet.css';
-import EditCard from "./Components/EditCard";
+//import EditCard from "./Components/EditCard";
 
 function App() {
 

@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import CardItem from "./CardItem";
 import img from "./images/img.jpg";
-import "../styles/App.css"
+import "../Components/styles/App.css"
 
 
 const cardData = [
