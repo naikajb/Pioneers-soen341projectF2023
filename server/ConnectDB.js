@@ -11,7 +11,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 // Set MIME type for CSS files (Eliminates a MIME type error)
 app.get('/public/styles.css', (req, res) => {
   res.setHeader('Content-Type', 'text/css');
-  res.sendFile(__dirname + '/public/styles.css');
+  res.sendFile(__dirname + '../public/styles.css');
 });
 
 // Set MIME type for JS files (Eliminates a MIME type error)

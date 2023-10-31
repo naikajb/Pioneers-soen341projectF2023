@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import 'reactjs-popup/dist/index.css';
 import Grid from "@mui/material/Grid";
-import img from "./logo.png";
+import img from "./images/logo.png";
 import EditCard from './EditCard';
 
 const dummyListings = [

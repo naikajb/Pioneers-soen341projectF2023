@@ -1,0 +1,46 @@
+*{
+  margin:0%;
+}
+.page{
+  margin-top: 0;
+  display: flex;
+  
+}
+.propertyItem:hover {
+  transform: scale(1.02); /* Increase the size by 5% on hover */
+  transition: transform 0.3s ease;
+  box-shadow: 10px 10px 30px rgba(0, 0, 0, 0.1);
+}
+.favorite {
+  transition: transform 0.2s ease-in-out;
+}
+
+.favorite:hover {
+  transform: scale(1.4); 
+}
+.gridContainer {
+  padding: 7em;
+  display: grid;
+  grid-gap: 2em;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  justify-content: center;
+  align-items: center;
+}
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0 auto; /* Center horizontally and create equal left and right margins */
+    max-width: 1200px; /* Adjust the maximum width as needed */
+    padding: 20px; 
+  }
+  
+  .features {
+    color: #574AE2;
+    background-color: pink;
+    
+  }
+
+  .favBtn {
+    margin-top: 5em;
+  }

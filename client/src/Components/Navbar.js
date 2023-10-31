@@ -1,6 +1,6 @@
-import logo from './logo.png';
-import navIcon from './nav.png';
-import accountIcon from './test.png';
+import logo from './images/logo.png';
+import navIcon from './images/nav.png';
+import accountIcon from './images/test.png';
 function Navbar(){
 
     return (

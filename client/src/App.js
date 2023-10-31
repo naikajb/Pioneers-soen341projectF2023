@@ -1,16 +1,16 @@
 import React from 'react';
-import './Components/Navbar.css';
+import './Components/styles/Navbar.css';
 import Navbar from './Components/Navbar.js';
 import CardGrid from "./Components/CardGrid";
 //import CardDetail from "./Components/CardDetail";
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import './App.css';
-import './Components/EditProperty.css';
+import './styles/App.css';
+import './Components/styles/EditProperty.css';
 import EditPropertyView from './Components/EditPropertyView.js';
 //import { useLocation } from "react-router-dom";
 import ListingDetails from './Components/listing';
 import dummyListings from './Components/dummyData';
-import './Components/listingDet.css';
+import './Components/styles/listingDet.css';
 import EditCard from "./Components/EditCard";
 
 function App() {

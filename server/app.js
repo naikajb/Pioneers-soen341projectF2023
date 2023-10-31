@@ -1,7 +1,7 @@
 const express = require('express');
 const app = express();
 const path = require('path');
-const dummyListings = require('./views/dummyData'); // Import dummy data
+const dummyListings = require('../views/dummyData'); // Import dummy data  
 
 app.set('view engine', 'ejs');
 app.use(express.static(path.join(__dirname, 'public')));

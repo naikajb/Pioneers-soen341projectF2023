@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import './broker.css';
+import './styles/broker.css';
 
 // Individual Broker Component
 const Broker = ({ broker, onUpdate, onDelete }) => {
