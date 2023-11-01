@@ -38,7 +38,7 @@ function CardItem({ data, toggleFavorite  }) {
       <Card onClick={handleCardClick} className="propertyItem">
         {/* <CardMedia component="img" alt="green iguana" height="140" image={data.image} /> */}
         <CardMedia component="img" alt="Property Image" height="140" src={data.image} />
-        <CardContent>
+        <CardContent className="priceAddressContent">
           <Typography gutterBottom variant="h5" component="div" fontWeight="bold">
             {data.price}
           </Typography>

@@ -25,6 +25,7 @@
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
   justify-content: center;
   align-items: center;
+  background-color: #2c2c2c;
 }
 .container {
     display: flex;
@@ -35,12 +36,10 @@
     padding: 20px; 
   }
   
-  .features {
-    color: #574AE2;
-    background-color: pink;
-    
-  }
+.favBtn {
+    margin-top: 1em;
+}
 
-  .favBtn {
-    margin-top: 5em;
-  }
+.priceAddressContent {
+  background-color: #c5dfd5;
+}

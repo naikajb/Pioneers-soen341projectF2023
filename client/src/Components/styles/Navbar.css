@@ -93,10 +93,10 @@
 .Navbar {
     display: flex;
     align-items: center;
-    background-color: #25291c;
+    background-color: #2c2c2c;;
     color: white;
     height: 60px; /* Adjust the height as needed */
-    position: fixed;
+    /* position: fixed; */
     width: 100%;
     z-index: 1;
     top: 0; /* Ensure the Navbar is fixed to the top */
