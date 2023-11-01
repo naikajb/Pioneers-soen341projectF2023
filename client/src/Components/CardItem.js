@@ -20,7 +20,7 @@ function CardItem({ data, toggleFavorite  }) {
     // Redirect to the new page and pass data using state
     navigate("/CardDetail", {
       state: {
-        id: data.id
+        id: data._id
       },
     });
   };
@@ -30,13 +30,14 @@ function CardItem({ data, toggleFavorite  }) {
     setIsFavorite(!isFavorite);
 
     // Pass the data.id to the parent component (CardGrid)
-  toggleFavorite(data.id);
+  toggleFavorite(data._id);
   };
 
   return (
    
       <Card onClick={handleCardClick} className="propertyItem">
-        <CardMedia component="img" alt="green iguana" height="140" image={data.image} />
+        {/* <CardMedia component="img" alt="green iguana" height="140" image={data.image} /> */}
+        <CardMedia component="img" alt="Property Image" height="140" src={data.image} />
         <CardContent>
           <Typography gutterBottom variant="h5" component="div" fontWeight="bold">
             {data.price}
