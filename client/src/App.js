@@ -12,6 +12,9 @@ import ListingDetails from './Components/listing';
 //import dummyListings from './Components/dummyData';
 import './Components/styles/listingDet.css';
 //import EditCard from "./Components/EditCard";
+import Login from './Components/Login.js';
+import Register from './Components/Register.js';
+
 
 
 function App() {
@@ -22,6 +25,8 @@ function App() {
         <Route exact path='/' element={<div><Navbar /> <CardGrid /></div> } />
         <Route path="/CardDetail" element={<div><Navbar /> <ListingDetails /></div>} />
         <Route exact path='/editProp' element={<div><Navbar /> <EditPropertyView /></div> } />
+        <Route exact path='/login' element={<div><Navbar /> <Login /></div> } />
+        <Route exact path='/register' element={<div><Navbar /><Register /></div>} />
         </Routes>
     </Router>
     
