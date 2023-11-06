@@ -79,6 +79,7 @@
     background-color: #574AE2;
     color: #fff;
     padding: 10px 20px;
+    margin: 10px 10px 10px 0px;
     border: none;
     border-radius: 8px;
     font-size: 16px;
@@ -91,7 +92,7 @@
   }
 
 .popup {
-    display: none;
+    display: block;
     position: fixed;
     z-index: 1;
     left: 0;

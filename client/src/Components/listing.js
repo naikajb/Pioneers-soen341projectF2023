@@ -31,6 +31,7 @@ function ListingDetails() {
 
 
   const [isPopupOpen, setPopupOpen] = useState(false);
+  const [isPopupOpen2, setPopupOpen2] = useState(false);
   const [formData, setFormData] = useState({
     firstName: '',
     lastName: '',
@@ -45,6 +46,13 @@ function ListingDetails() {
 
   const closePopup = () => {
     setPopupOpen(false);
+  };
+  const openPopup2 = () => {
+    setPopupOpen2(true);
+  };
+
+  const closePopup2 = () => {
+    setPopupOpen2(false);
   };
 
   const handleFormChange = (event) => {
@@ -68,7 +76,7 @@ function ListingDetails() {
             <div>
               <h2 className="section-title">Property Details</h2>
               <p className="detail">Description: {listing.description}</p>
-              <p className="detail">Price: ${listing.price}</p>
+              <p className="detail">Price: {listing.price}</p>
               <p className="detail">Bedrooms: {listing.bedroom}</p>
               <p className="detail">Bathrooms: {listing.bathroom}</p>
               {/* Add more listing details as needed */}
@@ -91,8 +99,96 @@ function ListingDetails() {
             {/* Add more broker details as needed */}
           </div>
           <button className="cta-button" onClick={openPopup}>
+            
             Book an Appointment
           </button>
+              {isPopupOpen && (
+            <div id="popup" className="popup">
+              <div className="popup-content">
+                <span className="close" onClick={closePopup}>&times;</span>
+                <h2 className="section-title">Book an Appointment</h2>
+                <form>
+                  {/* Add your form fields here */}
+                  <div className="form-group">
+                    <label htmlFor="firstname">First Name:</label>
+                    <input type="text" id="firstname" name="firstname" required />
+                  </div>
+
+                  <div className="form-group">
+                    <label htmlFor="lastname">Last Name:</label>
+                    <input type="text" id="lastname" name="lastname" required />
+                  </div>
+
+                  <div className="form-group">
+                    <label htmlFor="email">Email:</label>
+                    <input type="email" id="email" name="email" required />
+                  </div>
+
+                  <div className="form-group">
+                    <label htmlFor="appointmentDate">Select a date:</label>
+                    <input type="date" id="appointmentDate" name="appointmentDate" required />
+                  </div>
+
+                  <div className="form-group">
+                    <label>Select your preferred time:</label><br />
+                    <label htmlFor="morning">
+                      <input type="radio" id="morning" name="time" value="morning" /> Morning
+                    </label><br />
+                    <label htmlFor="afternoon">
+                      <input type="radio" id="afternoon" name="time" value="afternoon" /> Afternoon
+                    </label><br />
+                    <label htmlFor="evening">
+                      <input type="radio" id="evening" name="time" value="evening" /> Evening
+                    </label>
+                  </div>
+
+                  <div className="form-group">
+                    <button className="cta-button" type="submit">Submit</button>
+                  </div>
+                </form>
+              </div>
+            </div>
+          )}
+  
+          <button className="cta-button" onClick={openPopup2}>
+            
+            Make an Offer
+          </button>
+              {isPopupOpen2 && (
+            <div id="popup" className="popup">
+              <div className="popup-content">
+                <span className="close" onClick={closePopup2}>&times;</span>
+                <h2 className="section-title">Book an Appointment</h2>
+                <form>
+                  {/* Add your form fields here */}
+                  <div className="form-group">
+                    <label htmlFor="firstname">First Name:</label>
+                    <input type="text" id="firstname" name="firstname" required />
+                  </div>
+
+                  <div className="form-group">
+                    <label htmlFor="lastname">Last Name:</label>
+                    <input type="text" id="lastname" name="lastname" required />
+                  </div>
+
+                  <div className="form-group">
+                    <label htmlFor="email">Email:</label>
+                    <input type="email" id="email" name="email" required />
+                  </div>
+                  
+                  <div className="form-group">
+                    <label htmlFor="offer">Offer:</label>
+                    <input type="text" id="offer" name="offer" required />
+                  </div>
+                  
+
+                  <div className="form-group">
+                    <button className="cta-button" type="submit">Submit</button>
+                  </div>
+                </form>
+              </div>
+            </div>
+          )}
           {/* ... Broker details ... */}
         </div>
       </div>
