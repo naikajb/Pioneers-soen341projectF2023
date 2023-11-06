@@ -142,3 +142,10 @@
   ul {
     align-items: center;
   }
+
+  .Navlinks:hover{
+    font-weight: bold;
+    font-size: 1.3em;
+  }
+
+  
