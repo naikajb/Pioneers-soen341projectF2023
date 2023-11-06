@@ -2,6 +2,7 @@ const express = require("express");
 const mongoose = require("mongoose");
 const app = express();
 const cors = require('cors');
+const bcrypt = require('bcrypt');
 
 app.use(cors());
 app.use(express.json());
@@ -19,45 +20,50 @@ app.get("/api/properties", async (req, res) => {
   res.json(properties);
 });
 
-//Define an endpoint to register user
+// Define an endpoint to register user
 app.post("/api/register", async (req, res) => {
-  console.log(req.body);
   try {
+    const existingUser = await User.findOne({ email: req.body.email });
+
+    if (existingUser) {
+      return res.json({ status: 'error', error: 'Account already exists' });
+    }
+
     const newUser = await User.create({
       name: req.body.name,
       email: req.body.email,
       password: req.body.password,
-    })
+    });
 
     res.json({ status: 'ok' });
   } catch (err) {
-    res.json({ status: 'error', error: 'Account already exists' });
+    res.json({ status: 'error', error: 'Account registration failed' });
   }
+});
 
-})
 
 //Define an endpoint to login user
-app.post("/api/login", async (req, res) => {
-  console.log(req.body);
+app.post('/api/login', async (req, res) => {
   try {
-    const user = await User.findOne({
-      email: req.body.email,
-      password: req.body.password,
-    })
+    const user = await User.findOne({ email: req.body.email });
 
-    if (user) {
-      return res.json({ status: 'ok', user: true })
-    } else {
-      return res.json({ status: 'error', user: false })
+    if (!user) {
+      return res.json({ status: 'error', user: false, error: "Account doesn't exist" });
     }
 
+    // Compare the provided plain text password with the hashed password in the database
+    bcrypt.compare(req.body.password, user.password, (err, isMatch) => {
+      if (err || !isMatch) {
+        return res.json({ status: 'error', user: false, error: "Incorrect password" });
+      }
 
-    res.json({ status: 'ok' });
+      res.json({ status: 'ok', user: true });
+    });
   } catch (err) {
     res.json({ status: 'error' });
   }
+});
 
-})
 
 //port
 app.listen(5000, () => {

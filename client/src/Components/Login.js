@@ -1,9 +1,12 @@
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 function Login() {
 
     const [email, setEmail] = useState();
     const [password, setPassword] = useState();
+    const [error, setError] = useState(null);
+    const navigate = useNavigate();
 
     async function loginUser(event) {
         event.preventDefault()
@@ -19,14 +22,20 @@ function Login() {
         })
 
         const data = await response.json()
-        console.log(data)
+         
+        if (data.status === 'ok') {
+            console.log('Login successful');
+            navigate("/");
+        } else {
+            setError(data.error);
+        }
     }
 
     return (
         <div class="loginContainer">
             <form class="loginForm" onSubmit={loginUser}>
                 <div class="input-box">
-                    <header>Login Here</header>
+                    <header>Login Here {error && <div className="error-message">{error}</div>}</header>
                     <div class="input-field">
                         <input type="text" class="input" id="email" value={email} onChange={(e) => setEmail(e.target.value)} />
                         <label for="email">Email</label>

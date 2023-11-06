@@ -1,11 +1,14 @@
-import { useState} from "react";
+import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 function Register() {
 
-     
+
     const [name, setName] = useState();
     const [email, setEmail] = useState();
     const [password, setPassword] = useState();
+    const [error, setError] = useState(null);
+    const navigate = useNavigate();
 
     async function registerUser(event) {
         event.preventDefault()
@@ -22,39 +25,46 @@ function Register() {
         })
 
         const data = await response.json()
-        console.log(data)
+        
+        if (data.status === 'ok') {
+            console.log('Registration successful');
+            navigate("/login");
+        } else {
+            setError(data.error);
+        }
     }
 
-    return(
-            <div class="registerContainer">
-            <form class = "registerForm" onSubmit={registerUser}>
+    return (
+        <div class="registerContainer">
+            <form class="registerForm" onSubmit={registerUser}>
                 <div class="input-box">
-                   <header>Register Here</header>
-                   <div class="input-field">
-                    <input type="text" class="input" id="name" value={name} onChange={(e) => setName(e.target.value)} />
-                    <label for="name">Name</label> 
-                </div> 
-                   <div class="input-field">
+                    <header>Register Here {error && <div className="error-message">{error}</div>}</header>
+                     
+                    <div class="input-field">
+                        <input type="text" class="input" id="name" value={name} onChange={(e) => setName(e.target.value)} />
+                        <label for="name">Name</label>
+                    </div>
+                    <div class="input-field">
                         <input type="text" class="input" id="email" value={email} onChange={(e) => setEmail(e.target.value)} />
-                        <label for="email">Email</label> 
-                    </div> 
-                   <div class="input-field">
+                        <label for="email">Email</label>
+                    </div>
+                    <div class="input-field">
                         <input type="password" class="input" id="pass" value={password} onChange={(e) => setPassword(e.target.value)} />
                         <label for="pass">Password</label>
-                    </div> 
-                   <div class="input-field">
+                    </div>
+                    <div class="input-field">
                         <input type="submit" class="submit" value="Register" />
-                   </div> 
-                   <div class="alternative">
-                    <span>Already have an account? <a href="/login">Login</a></span>
-                   </div>
-                </div> 
-                </form> 
+                    </div>
+                    <div class="alternative">
+                        <span>Already have an account? <a href="/login">Login</a></span>
+                    </div>
+                </div>
+            </form>
         </div>
 
     );
 
-   
+
 }
 
 export default Register;
