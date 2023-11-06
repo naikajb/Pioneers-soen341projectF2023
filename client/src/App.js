@@ -22,14 +22,14 @@ function App() {
   return (
     <Router>
       <Routes>
-        <Route exact path='/' element={<div><Navbar /> <CardGrid /></div> } />
+        <Route exact path='/' element={<div><Navbar /> <CardGrid /></div>} />
         <Route path="/CardDetail" element={<div><Navbar /> <ListingDetails /></div>} />
-        <Route exact path='/editProp' element={<div><Navbar /> <EditPropertyView /></div> } />
-        <Route exact path='/login' element={<div><Navbar /> <Login /></div> } />
+        <Route exact path='/editProp' element={<div><Navbar /> <EditPropertyView /></div>} />
+        <Route exact path='/login' element={<div><Navbar /> <Login /></div>} />
         <Route exact path='/register' element={<div><Navbar /><Register /></div>} />
-        </Routes>
+      </Routes>
     </Router>
-    
+
   )
 }
 

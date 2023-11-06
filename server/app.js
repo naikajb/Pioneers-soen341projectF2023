@@ -1,75 +1,65 @@
 const express = require("express");
 const mongoose = require("mongoose");
 const app = express();
+const cors = require('cors');
+
+app.use(cors());
+app.use(express.json());
 
 mongoose.connect("mongodb+srv://admin:zhpEohWXSzyKgQMH@cluster0.0l0riwk.mongodb.net/?retryWrites=true&w=majority");
 
-const Property = require('./models/propertiesModel'); 
+//database models
+const Property = require('./models/propertiesModel');
+const User = require('./models/usersModel');
 
-// async function insert() {
-//   await Property.create({  price: "$599,999",
-//   address: "1455 Blvd. De Maisonneuve Ouest",
-//   bedroom: 3,
-//   bathroom: 2,
-//   amenities: ['Swimming Pool', 'Garden', 'Garage'],
-//   broker: { name: 'John Doe', contact: '123-456-7890' } });
-
-//   await Property.create({ price: "$1,045,657",
-//   address: "1455 Blvd. De Maisonneuve Ouest",
-//   bedroom: 4,
-//   bathroom: 3,
-//   amenities: ['Swimming Pool', 'Garden', 'Garage'],
-//   broker: { name: 'John Doe', contact: '123-456-7890' } });
-
-//   await Property.create({  price: "$234,567",
-//   address: "1455 Blvd. De Maisonneuve Ouest",
-//   bedroom: 3,
-//   bathroom: 2,
-//   amenities: ['Swimming Pool', 'Garden', 'Garage'],
-//   broker: { name: 'John Doe', contact: '123-456-7890' } });
-
-//   await Property.create({  price: "$780,500",
-//   address: "1455 Blvd. De Maisonneuve Ouest",
-//   bedroom: 4,
-//   bathroom: 3,
-//   amenities: ['Swimming Pool', 'Garden', 'Garage'],
-//   broker: { name: 'John Doe', contact: '123-456-7890' } });
-
-//   await Property.create({  price: "$450,000",
-//   address: "1455 Blvd. De Maisonneuve Ouest",
-//   bedroom: 3,
-//   bathroom: 2,
-//   amenities: ['Swimming Pool', 'Garden', 'Garage'],
-//   broker: { name: 'John Doe', contact: '123-456-7890' } });
-
-//   await Property.create({  price: "$970,000",
-//   address: "1455 Blvd. De Maisonneuve Ouest",
-//   bedroom: 10,
-//   bathroom: 2,
-//   amenities: ['Swimming Pool', 'Garden', 'Garage'],
-//   broker: { name: 'John Doe', contact: '123-456-7890' } });
-
-// }
-
-//insert();
-
-// async function read() {
-//   const properties = await Property.find().exec();
-//   properties.forEach(property => {
-//     console.log(`Price: ${property.price}, Address: ${property.address}`);
-//   });
-// }
-
-// Define an API endpoint to fetch properties
+//Define an endpoint to fetch properties
 app.get("/api/properties", async (req, res) => {
   const properties = await Property.find().exec();
   console.log("Fetched data from MongoDB:", properties);
   res.json(properties);
 });
 
-//read();
+//Define an endpoint to register user
+app.post("/api/register", async (req, res) => {
+  console.log(req.body);
+  try {
+    const newUser = await User.create({
+      name: req.body.name,
+      email: req.body.email,
+      password: req.body.password,
+    })
+
+    res.json({ status: 'ok' });
+  } catch (err) {
+    res.json({ status: 'error', error: 'Account already exists' });
+  }
+
+})
+
+//Define an endpoint to login user
+app.post("/api/login", async (req, res) => {
+  console.log(req.body);
+  try {
+    const user = await User.findOne({
+      email: req.body.email,
+      password: req.body.password,
+    })
+
+    if (user) {
+      return res.json({ status: 'ok', user: true })
+    } else {
+      return res.json({ status: 'error', user: false })
+    }
 
 
+    res.json({ status: 'ok' });
+  } catch (err) {
+    res.json({ status: 'error' });
+  }
+
+})
+
+//port
 app.listen(5000, () => {
   console.log("Server running on port 5000");
 });
