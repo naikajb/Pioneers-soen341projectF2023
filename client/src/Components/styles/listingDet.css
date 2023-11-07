@@ -1,0 +1,155 @@
+.main-content {
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #d5eedd; /* Set the background color for the website */
+    color: black; /* Set the text color for titles and headings */
+  }
+
+  .header {
+    background-color: #fff;
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+  }
+  
+  .slideshow {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 400px;
+    padding: 20px; /* Add padding here to create space around the slideshow */
+  }
+  
+  .slideshow img {
+    max-width: 100%;
+    height: auto;
+  }
+  .title {
+    font-family: 'Josefin Sans', sans-serif;
+    text-align: center;
+    padding: 20px 0;
+    font-size: 32px;
+    color: #574AE2; /* Set the text color for the address */
+  }
+  
+  .main-content {
+    padding: 80px 20px 0px 20px;
+  }
+  
+  .flex-container {
+    display: flex;
+    justify-content: space-between;
+    
+  }
+  
+  .left-column, .right-column {
+    background-color: #fff;
+    padding: 20px;
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+  }
+  
+  .left-column {
+    width: 60%;
+  }
+  
+  .right-column {
+    width: 35%;
+  }
+  
+  .section-title {
+    font-family: 'Josefin Sans', sans-serif;
+    font-size: 24px;
+    margin-bottom: 10px;
+    color: #574AE2; /* Set the text color for section titles */
+  }
+  
+  .detail {
+    margin-bottom: 5px;
+  }
+  
+  .amenities-list {
+    list-style: none;
+    padding: 0;
+  }
+  
+  .amenities-list li {
+    margin-bottom: 5px;
+  }
+  
+  .cta-button {
+    background-color: #574AE2;
+    color: #fff;
+    padding: 10px 20px;
+    margin: 10px 10px 10px 0px;
+    border: none;
+    border-radius: 8px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease-in-out;
+  }
+  
+  .cta-button:hover {
+    background-color: #281CAD;
+  }
+
+.popup {
+    display: block;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgb(0,0,0);
+    background-color: rgba(0,0,0,0.4);
+    padding-top: 60px;
+  }
+  
+  .popup-content {
+    text-align: center;
+    background-color: #d5eedd;
+    margin: 5% auto;
+    padding: 20px;
+    border: 1px solid #888;
+    border-radius: 10px;
+    width: 20%;
+    color: black;
+  }
+  
+  .close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+  }
+  
+  .close:hover,
+  .close:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+  }
+  
+  .form-group {
+    margin-bottom: 10px; /* Adjust spacing between form fields */
+  }
+  
+  label {
+    display: block; /* Ensure labels appear on a new line */
+  }
+
+  .form-group label {
+    display: block;
+    margin-bottom: 5px;
+  }
+  
+  .form-group input[type="radio"] {
+    margin-right: 10px;
+  }
+  .form-group input[type="date"] {
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+  }
+  
+  
