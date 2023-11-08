@@ -14,7 +14,9 @@ import './Components/styles/listingDet.css';
 //import EditCard from "./Components/EditCard";
 import Login from './Components/Login.js';
 import Register from './Components/Register.js';
-
+import NavbarBroker from './Components/NavbarBroker.js';
+import ManageOffers from './Components/ManageOffers.js';
+import './Components/styles/ManageOffers.css';
 
 
 function App() {
@@ -22,11 +24,12 @@ function App() {
   return (
     <Router>
       <Routes>
-        <Route exact path='/' element={<div><Navbar /> <CardGrid /></div>} />
+        <Route className = 'navbar-element' exact path='/' element={<div><Navbar /> <CardGrid /></div>} />
         <Route path="/CardDetail" element={<div><Navbar /> <ListingDetails /></div>} />
-        <Route exact path='/editProp' element={<div><Navbar /> <EditPropertyView /></div>} />
+        <Route exact path='/editProp' element={<div><NavbarBroker /> <EditPropertyView /></div>} />
         <Route exact path='/login' element={<div><Navbar /> <Login /></div>} />
         <Route exact path='/register' element={<div><Navbar /><Register /></div>} />
+        <Route exact path = '/manageOffers' element = {<div><NavbarBroker /> <ManageOffers /></div>} />
       </Routes>
     </Router>
 

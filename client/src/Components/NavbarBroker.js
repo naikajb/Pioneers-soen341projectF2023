@@ -2,6 +2,10 @@ import logo from './images/logo.png';
 import navIcon from './images/nav.png';
 import accountIcon from './images/test.png';
 import { Link } from '@mui/material';
+
+function showMenu(){
+
+}
 function Navbar(){
 
     return (
@@ -18,17 +22,22 @@ function Navbar(){
             </p>    
         </a>   
                 <ul> 
-                    <li className = 'Navlinks'> Search </li>
+                    {/*<li className = 'Navlinks'> Search </li>
                     <li className = 'Navlinks'> Sell </li>
-                    <li className = 'Navlinks'> Buy </li>
-                    
+                    <li className = 'Navlinks'> Buy </li>}*/}
                     <a href = "">
-                        <img className = "nav-icon" src = {navIcon} alt = "logo" width = "50%" height = "50%"/>
+                        <img  onClick = "showMenu()" className = "nav-icon" src = {navIcon} alt = "logo" width = "50%" height = "50%"/>
                     </a>
                     <li className='Navlinks'>
-                    <button className = "offers-button">Manage Offers</button>  
-                    {/*<button><img class = "account-icon" src = {accountIcon} alt = "logo" width = "10%" height = "10%"/> sign-in </button> */}
-                </li>
+                        <a href = "/manageOffers">
+                        <button href = "/manageOffers" className = "offers-button">Manage Offers</button>  
+                        </a>
+                    </li>
+                    <li className='Navlinks'>
+                        <a href = "/editprop">
+                        <button className = 'properties-button'>Manage Properties</button>
+                        </a> 
+                    </li>
                 </ul>
         </nav>
         

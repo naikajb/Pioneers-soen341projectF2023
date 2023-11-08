@@ -4,7 +4,8 @@
   "description": "Develop a realestate website that enables customers to book appointments, view listings, and favorite listings. In addition, enable brokers to add, remove, and edit listings.",
   "main": "app.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node app.js"
   },
   "keywords": [],
   "author": "",
