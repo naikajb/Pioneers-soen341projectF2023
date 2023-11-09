@@ -21,6 +21,8 @@ import NavbarBuyer from './Components/NavbarBuyer.js';
 import SearchBroker from './Components/SearchBroker.js';
 import './Components/styles/SearchBroker.css';
 import Footer from './Components/footer.js';
+import BrokersList from './Components/Broker';
+import BrokerOffers from './Components/BrokerOffers'
 
 function App() {
 
@@ -34,6 +36,9 @@ function App() {
         <Route exact path='/register' element={<div><Navbar /><Register /><Footer/></div>} />
         <Route exact path = '/manageOffers' element = {<div><NavbarBroker /> <ManageOffers /><Footer/></div>} />
         <Route exact path = '/searchBrokers' element = {<div><NavbarBuyer/><SearchBroker/><Footer/></div>}/>
+        <Route exact path='/broker' element={
+          <div style={{flex: '1 0 auto'}}><Navbar /><BrokersList /> <Footer /></div>} />
+  
       </Routes>
     </Router>
 
