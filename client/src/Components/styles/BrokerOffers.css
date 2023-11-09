@@ -1,0 +1,54 @@
+.offers-container {
+    padding: 20px;
+  }
+  
+  .offers-list {
+    margin: 0;
+    padding: 0;
+    list-style-type: none;
+  }
+  
+  .offer-item {
+    background-color: #f9f9f9;
+    border: 1px solid #ddd;
+    padding: 10px 15px;
+    margin-bottom: 10px;
+    cursor: pointer;
+  }
+  
+  .offer-item:hover {
+    background-color: #efefef;
+  }
+  
+  .modal-backdrop {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+  }
+  
+  .modal-content {
+    background-color: white;
+    padding: 20px;
+    border-radius: 5px;
+    width: 500px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+  }
+  
+  .modal-actions {
+    margin-top: 20px;
+    text-align: right;
+  }
+  
+  .modal-actions button {
+    margin-left: 10px;
+  }
+  
+  /* You can add more styles as needed */
+  

@@ -12,7 +12,57 @@ mongoose.connect("mongodb+srv://admin:zhpEohWXSzyKgQMH@cluster0.0l0riwk.mongodb.
 //database models
 const Property = require('./models/propertiesModel');
 const User = require('./models/usersModel');
+<<<<<<< HEAD
 const Broker = require('./models/brokersModel');
+=======
+const Broker = require('./models/brokerModel');
+//Amans Brokerlist
+// Define an endpoint to fetch brokers
+app.get("/api/brokers", async (req, res) => {
+  try {
+    const brokers = await Broker.find();
+    res.json(brokers);
+  } catch (error) {
+    console.error("Error fetching brokers:", error);
+    res.status(500).json({ status: 'error', error: 'Internal server error' });
+  }
+});
+
+// Define an endpoint to add a new broker
+app.post("/api/brokers", async (req, res) => {
+  try {
+    const newBroker = new Broker(req.body);
+    const savedBroker = await newBroker.save();
+    res.status(201).json(savedBroker);
+  } catch (error) {
+    console.error("Error adding new broker:", error);
+    res.status(400).json({ status: 'error', error: 'Bad request' });
+  }
+});
+
+// Define an endpoint to update an existing broker
+app.put("/api/brokers/:id", async (req, res) => {
+  try {
+    const updatedBroker = await Broker.findByIdAndUpdate(req.params.id, req.body, { new: true });
+    res.json(updatedBroker);
+  } catch (error) {
+    console.error("Error updating broker:", error);
+    res.status(400).json({ status: 'error', error: 'Bad request' });
+  }
+});
+
+// Define an endpoint to delete a broker
+app.delete("/api/brokers/:id", async (req, res) => {
+  try {
+    await Broker.findByIdAndDelete(req.params.id);
+    res.json({ status: 'ok' });
+  } catch (error) {
+    console.error("Error deleting broker:", error);
+    res.status(400).json({ status: 'error', error: 'Bad request' });
+  }
+});
+//Amans end point
+>>>>>>> AmanLatest
 
 //Define an endpoint to fetch properties
 app.get("/api/properties", async (req, res) => {
