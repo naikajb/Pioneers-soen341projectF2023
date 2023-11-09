@@ -17,19 +17,23 @@ import Register from './Components/Register.js';
 import NavbarBroker from './Components/NavbarBroker.js';
 import ManageOffers from './Components/ManageOffers.js';
 import './Components/styles/ManageOffers.css';
-
+import NavbarBuyer from './Components/NavbarBuyer.js';
+import SearchBroker from './Components/SearchBroker.js';
+import './Components/styles/SearchBroker.css';
+import Footer from './Components/footer.js';
 
 function App() {
 
   return (
     <Router>
       <Routes>
-        <Route className = 'navbar-element' exact path='/' element={<div><Navbar /> <CardGrid /></div>} />
-        <Route path="/CardDetail" element={<div><Navbar /> <ListingDetails /></div>} />
-        <Route exact path='/editProp' element={<div><NavbarBroker /> <EditPropertyView /></div>} />
-        <Route exact path='/login' element={<div><Navbar /> <Login /></div>} />
-        <Route exact path='/register' element={<div><Navbar /><Register /></div>} />
-        <Route exact path = '/manageOffers' element = {<div><NavbarBroker /> <ManageOffers /></div>} />
+        <Route className = 'navbar-element' exact path='/' element={<div><NavbarBuyer /> <CardGrid /><Footer/></div>} />
+        <Route path="/CardDetail" element={<div><Navbar /> <ListingDetails /><Footer/></div>} />
+        <Route exact path='/editProp' element={<div><NavbarBroker /> <EditPropertyView /><Footer/></div>} />
+        <Route exact path='/login' element={<div><Navbar /> <Login /><Footer/></div>} />
+        <Route exact path='/register' element={<div><Navbar /><Register /><Footer/></div>} />
+        <Route exact path = '/manageOffers' element = {<div><NavbarBroker /> <ManageOffers /><Footer/></div>} />
+        <Route exact path = '/searchBrokers' element = {<div><NavbarBuyer/><SearchBroker/><Footer/></div>}/>
       </Routes>
     </Router>
 
