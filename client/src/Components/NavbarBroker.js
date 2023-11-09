@@ -10,10 +10,10 @@ function Navbar(){
 
     return (
         
-        <nav className='Navbar'>
+        <nav data-testid = 'navbar' className='Navbar'>
         <div>
-        <a className = "links" href = "/">
-            <img class = "Navbar-logo" src = {logo} alt = "logo" width = "100%" height = "100%"/> 
+        <a data-testid = "navbar-logo"className = "links" href = "/">
+            <img data-testid = "navbar-logo" class = "Navbar-logo" src = {logo} alt = "logo" width = "100%" height = "100%"/> 
         </a>
         </div>
         <a lassName = "links" href = "/">
@@ -30,7 +30,7 @@ function Navbar(){
                     </a>
                     <li className='Navlinks'>
                         <a href = "/manageOffers">
-                        <button href = "/manageOffers" className = "offers-button">Manage Offers</button>  
+                        <button data-testid = "manageOffersButton" href = "/manageOffers" className = "offers-button">Manage Offers</button>  
                         </a>
                     </li>
                     <li className='Navlinks'>

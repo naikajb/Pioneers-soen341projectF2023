@@ -6,10 +6,10 @@ function Navbar(){
 
     return (
         
-        <nav className='Navbar'>
+        <nav data-testid = "navbar" className='Navbar'>
             <div>
-            <a href = "/">
-                <img class = "Navbar-logo" src = {logo} alt = "logo" width = "100%" height = "100%"/> 
+            <a data-testid = "navbar-logo" href = "/">
+                <img  className = "Navbar-logo" src = {logo} alt = "logo" width = "100%" height = "100%"/> 
             </a>
             </div>
             <a href = "/">
@@ -18,8 +18,8 @@ function Navbar(){
                 </p>    
             </a>
                 <ul> 
-                    <a href = "/searchBrokers">
-                        <li className = 'Navlinks'> Search Brokers </li>
+                    <a   href = "/searchBrokers">
+                        <li  className = 'Navlinks'> Search Brokers </li>
                     </a>
                     <a href = "/">
                         <li className = 'Navlinks'> Buy </li>

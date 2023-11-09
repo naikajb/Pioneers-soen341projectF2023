@@ -6,7 +6,7 @@ function Navbar(){
 
     return (
         
-        <nav className='Navbar'>
+        <nav data-testid = 'navbar' className='Navbar'>
             <div>
             <a href = "/">
                 <img class = "Navbar-logo" src = {logo} alt = "logo" width = "100%" height = "100%"/> 
