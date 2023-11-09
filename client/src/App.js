@@ -14,7 +14,13 @@ import './Components/styles/listingDet.css';
 //import EditCard from "./Components/EditCard";
 import Login from './Components/Login.js';
 import Register from './Components/Register.js';
-//Amans below
+// import NavbarBroker from './Components/NavbarBroker.js';
+// import ManageOffers from './Components/ManageOffers.js';
+// import './Components/styles/ManageOffers.css';
+// import NavbarBuyer from './Components/NavbarBuyer.js';
+// import SearchBroker from './Components/SearchBroker.js';
+// import './Components/styles/SearchBroker.css';
+
 import Footer from './Components/footer'; 
 import BrokersList from './Components/Broker';
 import BrokerOffers from './Components/BrokerOffers'
@@ -22,13 +28,12 @@ import BrokerOffers from './Components/BrokerOffers'
 //Amans above
 
 
-
 function App() {
 
   return (
     <Router>
       <Routes>
-        <Route exact path='/' element={<div><Navbar /> <CardGrid /><Footer /></div>} />
+      <Route exact path='/' element={<div><Navbar /> <CardGrid /><Footer /></div>} />
         <Route path="/CardDetail" element={<div><Navbar /> <ListingDetails /><Footer /></div>} />
         <Route exact path='/editProp' element={<div><Navbar /> <EditPropertyView /><BrokerOffers /><Footer /></div>} />
         <Route exact path='/login' element={<div><Navbar /> <Login /></div>} />
