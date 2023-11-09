@@ -12,11 +12,11 @@ mongoose.connect("mongodb+srv://admin:zhpEohWXSzyKgQMH@cluster0.0l0riwk.mongodb.
 //database models
 const Property = require('./models/propertiesModel');
 const User = require('./models/usersModel');
-<<<<<<< HEAD
-const Broker = require('./models/brokersModel');
-=======
+const Broker = require('./models/brokersModel'); //naika
 const Broker = require('./models/brokerModel');
 //Amans Brokerlist
+
+
 // Define an endpoint to fetch brokers
 app.get("/api/brokers", async (req, res) => {
   try {
@@ -61,8 +61,6 @@ app.delete("/api/brokers/:id", async (req, res) => {
     res.status(400).json({ status: 'error', error: 'Bad request' });
   }
 });
-//Amans end point
->>>>>>> AmanLatest
 
 //Define an endpoint to fetch properties
 app.get("/api/properties", async (req, res) => {
@@ -115,7 +113,7 @@ app.post('/api/login', async (req, res) => {
   }
 });
 
-//Define an endpoint to fetch brokers
+//Define an endpoint to fetch brokers (naika)
 app.get("/api/brokers", async (req, res) => {
   const brokers = await Broker.find().exec();
   console.log("Fetched data from MongoDB:", brokers);
