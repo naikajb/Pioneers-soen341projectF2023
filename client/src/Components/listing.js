@@ -98,7 +98,7 @@ function ListingDetails() {
             <p className="detail">Contact: {listing?.broker?.contact}</p>
             {/* Add more broker details as needed */}
           </div>
-          <button className="cta-button" onClick={openPopup}>
+          <button className="cta-button" button data-testid = "BookAppointment" onClick={openPopup}>
             
             Book an Appointment
           </button>
@@ -150,7 +150,7 @@ function ListingDetails() {
             </div>
           )}
   
-          <button className="cta-button" onClick={openPopup2}>
+          <button className="cta-button" button data-testid = "MakeOffer" onClick={openPopup2}>
             
             Make an Offer
           </button>
@@ -158,7 +158,7 @@ function ListingDetails() {
             <div id="popup" className="popup">
               <div className="popup-content">
                 <span className="close" onClick={closePopup2}>&times;</span>
-                <h2 className="section-title">Book an Appointment</h2>
+                <h2 className="section-title">Make an Offer</h2>
                 <form>
                   {/* Add your form fields here */}
                   <div className="form-group">
