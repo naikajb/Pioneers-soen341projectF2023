@@ -12,7 +12,7 @@ mongoose.connect("mongodb+srv://admin:zhpEohWXSzyKgQMH@cluster0.0l0riwk.mongodb.
 //database models
 const Property = require('./models/propertiesModel');
 const User = require('./models/usersModel');
-const Broker = require('./models/brokersModel'); //naika
+// const Broker = require('./models/brokersModel'); //naika
 const Broker = require('./models/brokerModel');
 //Amans Brokerlist
 
