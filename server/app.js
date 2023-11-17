@@ -78,10 +78,27 @@ app.post("/api/register", async (req, res) => {
       return res.json({ status: 'error', error: 'Account already exists' });
     }
 
+    // Check if the user's email exists in the brokers collection
+    const brokerWithEmail = await Broker.findOne({ email: req.body.email });
+
+    if (brokerWithEmail) {
+      //If the email exists in the brokers collection, register as a broker
+      const newUser = await User.create({
+        name: req.body.name,
+        email: req.body.email,
+        password: req.body.password,
+        userType: "broker",
+      });
+
+      return res.json({ status: 'ok' });
+    }
+
+    //If the email doesn't exist in the brokers collection, register user as a buyer
     const newUser = await User.create({
       name: req.body.name,
       email: req.body.email,
       password: req.body.password,
+      userType: "buyer",
     });
 
     res.json({ status: 'ok' });
