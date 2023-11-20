@@ -23,7 +23,7 @@ function Login() {
 
         const data = await response.json()
          
-        if (data.status === 'ok') {
+        if (data.user) {
             console.log('Login successful');
             navigate("/");
         } else {
@@ -37,11 +37,11 @@ function Login() {
                 <div class="input-box">
                     <header>Login Here {error && <div className="error-message">{error}</div>}</header>
                     <div class="input-field">
-                        <input type="text" class="input" id="email" value={email} onChange={(e) => setEmail(e.target.value)} />
+                        <input type="text" class="input" id="email" value={email} onChange={(e) => setEmail(e.target.value)} required />
                         <label for="email">Email</label>
                     </div>
                     <div class="input-field">
-                        <input type="password" class="input" value={password} onChange={(e) => setPassword(e.target.value)} />
+                        <input type="password" class="input" value={password} onChange={(e) => setPassword(e.target.value)} required />
                         <label for="pass">Password</label>
                     </div>
                     <div class="input-field">

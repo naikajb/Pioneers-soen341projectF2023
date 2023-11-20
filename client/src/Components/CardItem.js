@@ -25,12 +25,33 @@ function CardItem({ data, toggleFavorite  }) {
     });
   };
 
-  const handleFavoriteClick = (event) => {
-    event.stopPropagation(); // Prevent favoriteIcon click affecting cardItem click
+  // const handleFavoriteClick = (event) => {
+  //   event.stopPropagation(); // Prevent favoriteIcon click affecting cardItem click
+  //   setIsFavorite(!isFavorite);
+
+  //   // Pass the data.id to the parent component (CardGrid)
+  // toggleFavorite(data._id);
+  // };
+
+  const handleFavoriteClick = async (event) => {
+    event.stopPropagation();
     setIsFavorite(!isFavorite);
 
-    // Pass the data.id to the parent component (CardGrid)
-  toggleFavorite(data._id);
+    try {
+      const response = await fetch("/api/toggleFavorite", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ propertyId: data._id }),
+      });
+
+      const result = await response.json();
+      // Handle the response if needed
+      toggleFavorite(data._id);
+    } catch (error) {
+      console.error("Error toggling favorite:", error);
+    }
   };
 
   return (

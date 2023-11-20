@@ -41,15 +41,15 @@ function Register() {
                     <header>Register Here {error && <div className="error-message">{error}</div>}</header>
                      
                     <div class="input-field">
-                        <input type="text" class="input" id="name" value={name} onChange={(e) => setName(e.target.value)} />
+                        <input type="text" class="input" id="name" value={name} onChange={(e) => setName(e.target.value)} required />
                         <label for="name">Name</label>
                     </div>
                     <div class="input-field">
-                        <input type="text" class="input" id="email" value={email} onChange={(e) => setEmail(e.target.value)} />
+                        <input type="text" class="input" id="email" value={email} onChange={(e) => setEmail(e.target.value)} required />
                         <label for="email">Email</label>
                     </div>
                     <div class="input-field">
-                        <input type="password" class="input" id="pass" value={password} onChange={(e) => setPassword(e.target.value)} />
+                        <input type="password" class="input" id="pass" value={password} onChange={(e) => setPassword(e.target.value)} required />
                         <label for="pass">Password</label>
                     </div>
                     <div class="input-field">
