@@ -2,6 +2,9 @@ import React, { useState, useEffect } from 'react';
 import { useLocation } from "react-router-dom";
 import axios from "axios";
 
+//this is a test comment 21/11/2021
+
+
 function ListingDetails() {
   const location = useLocation();
   const { id } = location.state || {};
