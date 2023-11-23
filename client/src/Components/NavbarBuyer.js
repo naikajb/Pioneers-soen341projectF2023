@@ -1,8 +1,22 @@
 import logo from './images/logo.png';
 import navIcon from './images/nav.png';
 import accountIcon from './images/test.png';
-import { Link } from '@mui/material';
+// import { Link } from '@mui/material';
+import { useNavigate } from "react-router-dom";
+import { useContext } from "react";
+import { UserContext } from '../context/userContext.js';
+
 function Navbar(){
+
+
+    const { logout } = useContext(UserContext);
+    const { user } = useContext(UserContext);
+    const navigate = useNavigate(); 
+
+  const handleLogout = async () => {
+    await logout();
+    navigate("/");
+  };
 
     return (
         
@@ -18,25 +32,30 @@ function Navbar(){
                 </p>    
             </a>
                 <ul> 
-                    <a   href = "/searchBrokers">
-                        <li  className = 'Navlinks'> Search Brokers </li>
+                    <a href = "/searchBrokers">
+                        <li className = 'Navlinks'> Search Brokers </li>
                     </a>
                     <a href = "/">
                         <li className = 'Navlinks'> Buy </li>
                     </a>
                     
-                    <a href = "">
-                        <img className = "nav-icon" src = {navIcon} alt = "logo" width = "50%" height = "50%"/>
-                    </a>
-                    <li className='Navlinks'>
-                    <a href = "Login">
-                        <img className = "account-icon" src = {accountIcon} alt = "account icon"/>
-                    </a>    
-                    {/*<button><img class = "account-icon" src = {accountIcon} alt = "logo" width = "10%" height = "10%"/> sign-in </button> */}
-                </li>
+                    {user ? (
+          // If user is logged in, show the logout button
+          <li className="Navlinks" onClick={handleLogout}>
+            Logout
+          </li>
+        ) : (
+          // If user is not logged in, show the login link
+          <a href="/login">
+            <li className="Navlinks">
+              <img className="account-icon" src={accountIcon} alt="account icon" />
+            </li>
+          </a>
+        )}
                 </ul>
         </nav>
         
     )
 }
 export default Navbar;
+

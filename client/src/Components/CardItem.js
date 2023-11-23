@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import Card from "@mui/material/Card";
 import CardActions from "@mui/material/CardActions";
 import CardContent from "@mui/material/CardContent";
@@ -9,10 +9,19 @@ import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
 import FavoriteIcon from "@mui/icons-material/Favorite";
 import { useNavigate } from "react-router-dom";
 import "../Components/styles/App.css"
+import { UserContext } from '../context/userContext.js';
 
 
 
 function CardItem({ data, toggleFavorite  }) {
+
+  //get the current loggedin user (if there is one)
+  const {user} = useContext(UserContext)
+
+
+
+
+
   const [isFavorite, setIsFavorite] = useState(false);
   const navigate = useNavigate(); 
 
@@ -25,33 +34,12 @@ function CardItem({ data, toggleFavorite  }) {
     });
   };
 
-  // const handleFavoriteClick = (event) => {
-  //   event.stopPropagation(); // Prevent favoriteIcon click affecting cardItem click
-  //   setIsFavorite(!isFavorite);
-
-  //   // Pass the data.id to the parent component (CardGrid)
-  // toggleFavorite(data._id);
-  // };
-
-  const handleFavoriteClick = async (event) => {
-    event.stopPropagation();
+  const handleFavoriteClick = (event) => {
+    event.stopPropagation(); // Prevent favoriteIcon click affecting cardItem click
     setIsFavorite(!isFavorite);
 
-    try {
-      const response = await fetch("/api/toggleFavorite", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({ propertyId: data._id }),
-      });
-
-      const result = await response.json();
-      // Handle the response if needed
-      toggleFavorite(data._id);
-    } catch (error) {
-      console.error("Error toggling favorite:", error);
-    }
+    // Pass the data.id to the parent component (CardGrid)
+  toggleFavorite(data._id);
   };
 
   return (
@@ -79,6 +67,8 @@ function CardItem({ data, toggleFavorite  }) {
           <div onClick={handleFavoriteClick}>
             {isFavorite ? <FavoriteIcon color="error" className="favorite" /> : <FavoriteBorderIcon color="error" />}
           </div>
+          {/* only if there is a user */}
+          <div> {!!user && (<h2>Hi {user.name}</h2>)} </div>
         </CardActions>
       </Card>
    
@@ -86,3 +76,5 @@ function CardItem({ data, toggleFavorite  }) {
 }
 
 export default CardItem;
+
+

@@ -5,8 +5,7 @@ import "../Components/styles/App.css";
 import axios from "axios";
 
 function CardGrid() {
-  
-  
+
     const [favorites, setFavorites] = useState([]); // Store favorite card IDs
     const [showFavorites, setShowFavorites] = useState(false);
     const [propertyData, setPropertyData] = useState([]); // State to store fetched property data
@@ -24,44 +23,16 @@ function CardGrid() {
     }, []);
   
     // Function to toggle favorites
-    // const toggleFavorite = (_id) => {
-    //   if (favorites.includes(_id)) {
-    //     // Remove from favorites if already favorited
-    //     setFavorites(favorites.filter((favorite) => favorite !== _id));
-    //   } else {
-    //     // Add to favorites if not already favorited
-    //     setFavorites([...favorites, _id]);
-    //   }
-  
-    // };
-
-    const toggleFavorite = async (_id) => {
-      setFavorites((prevFavorites) => {
-        if (prevFavorites.includes(_id)) {
-          return prevFavorites.filter((favorite) => favorite !== _id);
-        } else {
-          return [...prevFavorites, _id];
-        }
-      });
-  
-      try {
-        const response = await fetch("/api/toggleFavorite", {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify({ propertyId: _id }),
-        });
-  
-        const result = await response.json();
-        // Handle the response if needed
-      } catch (error) {
-        console.error("Error toggling favorite:", error);
+    const toggleFavorite = (_id) => {
+      if (favorites.includes(_id)) {
+        // Remove from favorites if already favorited
+        setFavorites(favorites.filter((favorite) => favorite !== _id));
+      } else {
+        // Add to favorites if not already favorited
+        setFavorites([...favorites, _id]);
       }
+  
     };
-
-
-
   
     // Filter the property data based on the search term
     const filteredPropertyData = propertyData.filter((property) =>
@@ -95,6 +66,8 @@ function CardGrid() {
     </div>
   );
 }
+
+
 
 export default CardGrid;
 
