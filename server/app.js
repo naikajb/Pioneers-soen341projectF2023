@@ -162,7 +162,7 @@ app.use(express.json());
 app.use(cookieParser());
 app.use(express.urlencoded({extended: false}));
 
-mongoose.connect(process.env.MONGO_URL).then(() => console.log('db connected')).catch((err) => console.log('DB not connected', err))
+mongoose.connect("mongodb+srv://admin:zhpEohWXSzyKgQMH@cluster0.0l0riwk.mongodb.net/?retryWrites=true&w=majority").then(() => console.log('db connected')).catch((err) => console.log('DB not connected', err))
 
 //Use the routes to handle requests
 app.use('/api', routes);

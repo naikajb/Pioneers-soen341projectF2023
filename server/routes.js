@@ -7,6 +7,7 @@ const Broker = require('./models/brokerModel');
 const jwt = require("jsonwebtoken");
 const dotenv = require('dotenv').config();
 const cors = require('cors');
+const JWT_KEY = "pioneers_341";
 
 //middleware
 // router.use(
@@ -142,7 +143,7 @@ router.post('/login', async (req, res) => {
         name: user.name,
         type: user.userType
       }, 
-      process.env.JWT_SECRET, {}, (err, token) => {
+      JWT_KEY, {}, (err, token) => {
         if (err) {
           console.error("Error signing JWT:", err);
           return res.status(500).json({ status: 'error', error: 'Internal server error' });
