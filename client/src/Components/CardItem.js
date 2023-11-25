@@ -42,7 +42,7 @@ function CardItem({ data, toggleFavorite }) {
 
 
   const handleCardClick = () => {
-    navigate("/CardDetail", {
+    navigate("/listing", {
       state: {
         id: data._id
       },

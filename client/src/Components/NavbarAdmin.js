@@ -4,7 +4,7 @@ import { UserContext } from '../context/userContext.js';
 import logo from './images/logo.png';
 import accountIcon from './images/test.png';
 
-function NavbarBuyer() {
+function NavbarAdmin() {
   const { logout, user } = useContext(UserContext);
   const navigate = useNavigate();
 
@@ -26,11 +26,8 @@ function NavbarBuyer() {
         </p>
       </a>
       <ul>
-        <a href="/searchBrokers">
-          <li className="Navlinks">Find Brokers</li>
-        </a>
-        <a href="/">
-          <li className="Navlinks">Properties</li>
+        <a href="/broker">
+          <li className="Navlinks">Manage Brokers</li>
         </a>
         {user ? (
           <li className="Navlinks" onClick={handleLogout}>
@@ -46,4 +43,4 @@ function NavbarBuyer() {
   );
 }
 
-export default NavbarBuyer;
+export default NavbarAdmin;
