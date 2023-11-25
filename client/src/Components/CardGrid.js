@@ -37,16 +37,16 @@ function CardGrid() {
   }, [user]);
 
   // Cleanup function to reset states when the user logs out
-  useEffect(() => {
-    return () => {
-      if (!user) {
-        // Reset states when the component unmounts (user logs out)
-        setFavorites([]);
-        setShowFavorites(false);
-        setSearchTerm("");
-      }
-    };
-  }, []);
+  // useEffect(() => {
+  //   return () => {
+  //     if (!user) {
+  //       // Reset states when the component unmounts (user logs out)
+  //       setFavorites([]);
+  //       setShowFavorites(false);
+  //       setSearchTerm("");
+  //     }
+  //   };
+  // }, []);
 
   const toggleFavorite = (_id) => {
     setFavorites((prevFavorites) => {
