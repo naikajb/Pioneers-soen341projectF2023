@@ -12,7 +12,6 @@ mongoose.connect("mongodb+srv://admin:zhpEohWXSzyKgQMH@cluster0.0l0riwk.mongodb.
 //database models
 const Property = require('./models/propertiesModel');
 const User = require('./models/usersModel');
-// const Broker = require('./models/brokersModel'); //naika
 const Broker = require('./models/brokerModel');
 //Amans Brokerlist
 
@@ -113,12 +112,6 @@ app.post('/api/login', async (req, res) => {
   }
 });
 
-//Define an endpoint to fetch brokers (naika)
-app.get("/api/brokers", async (req, res) => {
-  const brokers = await Broker.find().exec();
-  console.log("Fetched data from MongoDB:", brokers);
-  res.json(brokers);
-});
 
 //port
 app.listen(5000, () => {
