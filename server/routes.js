@@ -9,14 +9,14 @@ const dotenv = require('dotenv').config();
 const cors = require('cors');
 
 //middleware
-router.use(
-  cors(
-    {
-      credentials: true,
-      origin: 'http://localhost:3000'
-    }
-  )
-)
+// router.use(
+//   cors(
+//     {
+//       credentials: true,
+//       origin: 'http://localhost:3000'
+//     }
+//   )
+// )
 
 // Define an endpoint to fetch brokers
 router.get("/brokers", async (req, res) => {
@@ -139,7 +139,8 @@ router.post('/login', async (req, res) => {
       const token = jwt.sign({
         email: user.email,
         id: user._id,
-        name: user.name
+        name: user.name,
+        type: user.userType
       }, 
       process.env.JWT_SECRET, {}, (err, token) => {
         if (err) {
@@ -184,4 +185,144 @@ router.post("/logout", (req, res) => {
 });
 
 
+
+// Define an endpoint to add a property to favorites
+router.post("/addFavorite", async (req, res) => {
+  const { userId, propertyId } = req.body;
+
+  try {
+    // Check if the property is already in favorites
+    const user = await User.findById(userId);
+
+    if (!user) {
+      return res.status(404).json({ status: 'error', error: 'User not found' });
+    }
+
+    if (user.favoriteProps.includes(propertyId)) {
+      return res.json({ status: 'ok', message: 'Property already in favorites' });
+    }
+
+    // Add the property to favorites
+    user.favoriteProps.push(propertyId);
+    await user.save();
+
+    res.json({ status: 'ok', message: 'Property added to favorites' });
+  } catch (error) {
+    console.error("Error adding property to favorites:", error);
+    res.status(500).json({ status: 'error', error: 'Internal server error' });
+  }
+});
+
+// Define an endpoint to remove a property from favorites
+router.post("/removeFavorite", async (req, res) => {
+  const { userId, propertyId } = req.body;
+
+  try {
+    const user = await User.findById(userId);
+
+    if (!user) {
+      return res.status(404).json({ status: 'error', error: 'User not found' });
+    }
+
+    // Remove the property from favorites
+    user.favoriteProps = user.favoriteProps.filter((prop) => prop.toString() !== propertyId);
+    await user.save();
+
+    res.json({ status: 'ok', message: 'Property removed from favorites' });
+  } catch (error) {
+    console.error("Error removing property from favorites:", error);
+    res.status(500).json({ status: 'error', error: 'Internal server error' });
+  }
+});
+
+
+router.get("/favorites/:userId", async (req, res) => {
+  try {
+    const user = await User.findById(req.params.userId);
+    if (!user) {
+      return res.status(404).json({ status: 'error', error: 'User not found' });
+    }
+
+    res.json({ status: 'ok', favoriteProps: user.favoriteProps });
+  } catch (error) {
+    console.error("Error fetching favorites:", error);
+    res.status(500).json({ status: 'error', error: 'Internal server error' });
+  }
+});
+
+
+
 module.exports = router;
+
+
+// // Define an endpoint to add a property to favorites
+// router.post("/addFavorite", async (req, res) => {
+//   const { userId, propertyId } = req.body;
+
+//   try {
+//     // Find the user by ID
+//     const user = await User.findById(userId);
+
+//     if (!user) {
+//       return res.status(404).json({ status: 'error', error: 'User not found' });
+//     }
+
+//     // Check if the property is already in favorites
+//     if (!user.favoriteProps.includes(propertyId)) {
+//       // Add the property to favorites
+//       user.favoriteProps.push(propertyId);
+//       await user.save();
+//     }
+
+//     res.status(200).json({ status: 'ok' });
+//   } catch (error) {
+//     console.error('Error adding property to favorites:', error);
+//     res.status(500).json({ status: 'error', error: 'Internal Server Error' });
+//   }
+// });
+
+// // Define an endpoint to remove a property from favorites
+// router.post("/removeFavorite", async (req, res) => {
+//   const { userId, propertyId } = req.body;
+
+//   try {
+//     // Find the user by ID
+//     const user = await User.findById(userId);
+
+//     if (!user) {
+//       return res.status(404).json({ status: 'error', error: 'User not found' });
+//     }
+
+//     // Remove the property from favorites
+//     user.favoriteProps = user.favoriteProps.filter((fav) => fav.toString() !== propertyId);
+//     await user.save();
+
+//     res.status(200).json({ status: 'ok' });
+//   } catch (error) {
+//     console.error('Error removing property from favorites:', error);
+//     res.status(500).json({ status: 'error', error: 'Internal Server Error' });
+//   }
+// });
+
+
+// // Define an endpoint to get a user by ID with favorite properties
+// router.get("/users/:id/favorites", async (req, res) => {
+//   try {
+//     const user = await User.findById(req.params.id).populate('favoriteProps');
+
+//     if (!user) {
+//       return res.status(404).json({ status: 'error', error: 'User not found' });
+//     }
+
+//     res.status(200).json({ favoriteProps: user.favoriteProps });
+//   } catch (error) {
+//     console.error('Error fetching user with favorites:', error);
+//     res.status(500).json({ status: 'error', error: 'Internal Server Error' });
+//   }
+// });
+
+
+
+
+
+

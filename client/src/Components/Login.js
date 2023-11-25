@@ -70,27 +70,34 @@ function Login() {
   const navigate = useNavigate();
   const { setUser } = useContext(UserContext);
 
-  const loginUser = async (event) => {
+  async function loginUser(event) {
     event.preventDefault();
     try {
       const response = await fetch("/api/login", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
-        },
+          
+        },withCredentials:true,
+        
         body: JSON.stringify({
           email,
           password,
-        })//,
-        // credentials: "include",
+        }),
       });
-
+  
       const data = await response.json();
-
+  
       if (response.ok) {
         console.log("Login successful");
         setUser(data.user); // Update user context with the received user data
         navigate("/");
+
+        // Fetch user profile after navigating to the home page
+        const profileResponse = await fetch("/api/profile");
+        const profileData = await profileResponse.json();
+        setUser(profileData);
+        
       } else {
         setError(data.error);
       }
@@ -98,7 +105,7 @@ function Login() {
       console.error("Error during login:", error);
       setError("Internal server error");
     }
-  };
+  }
 
   return (
     <div className="loginContainer">

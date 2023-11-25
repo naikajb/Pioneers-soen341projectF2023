@@ -1,5 +1,5 @@
 import logo from './images/logo.png';
-import navIcon from './images/nav.png';
+// import navIcon from './images/nav.png';
 import accountIcon from './images/test.png';
 // import { Link } from '@mui/material';
 import { useNavigate } from "react-router-dom";

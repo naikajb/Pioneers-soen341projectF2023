@@ -1,4 +1,5 @@
-    import { useState } from "react";
+    import axios from "axios";
+import { useState } from "react";
     import { useNavigate } from "react-router-dom";
 
     function Register() {
@@ -33,6 +34,7 @@
                 setError(data.error);
             }
         }
+
 
         return (
             <div class="registerContainer">

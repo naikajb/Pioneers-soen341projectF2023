@@ -29,8 +29,8 @@ import { UserContextProvider } from './context/userContext.js';
 //Amans above
 
 
-axios.defaults.baseURL = 'http://localhost:5000';
-axios.defaults.withCredentials = true;
+// axios.defaults.baseURL = 'http://localhost:5000';
+// axios.defaults.withCredentials = true;
 
 function App() {
 
@@ -43,12 +43,13 @@ function App() {
         <Route exact path = '/searchBrokers' element = {<div><NavbarBuyer/><SearchBroker/><Footer/></div>}/>
 
         {/* Broker pages */}
+        <Route className = 'navbar-element' exact path='/brokerHome' element={<div> <NavbarBroker /> <CardGrid /><Footer/></div>} />
         <Route exact path='/editProp' element={<div><NavbarBroker /> <EditPropertyView /><Footer/></div>} />
         <Route exact path = '/manageOffers' element = {<div><NavbarBroker /> <ManageOffers /><Footer/></div>} />
         <Route exact path='/broker' element={<div style={{flex: '1 0 auto'}}><Navbar /><BrokersList /> <Footer /></div>} />
 
         {/* pages for all */}
-        <Route path="/CardDetail" element={<div><Navbar /> <ListingDetails /><Footer/></div>} />
+        <Route path="/CardDetail" element={<div><NavbarBuyer /> <ListingDetails /><Footer/></div>} />  {/*CHANGEEEEEEE navbarbuyer*/}
         <Route exact path='/login' element={<div><Navbar /> <Login /><Footer/></div>} />
         <Route exact path='/register' element={<div><Navbar /><Register /><Footer/></div>} />
         
