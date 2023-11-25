@@ -9,16 +9,6 @@ const dotenv = require('dotenv').config();
 const cors = require('cors');
 const JWT_KEY = "pioneers_341";
 
-//middleware
-// router.use(
-//   cors(
-//     {
-//       credentials: true,
-//       origin: 'http://localhost:3000'
-//     }
-//   )
-// )
-
 // Define an endpoint to fetch brokers
 router.get("/brokers", async (req, res) => {
   try {
@@ -256,71 +246,6 @@ router.get("/favorites/:userId", async (req, res) => {
 module.exports = router;
 
 
-// // Define an endpoint to add a property to favorites
-// router.post("/addFavorite", async (req, res) => {
-//   const { userId, propertyId } = req.body;
-
-//   try {
-//     // Find the user by ID
-//     const user = await User.findById(userId);
-
-//     if (!user) {
-//       return res.status(404).json({ status: 'error', error: 'User not found' });
-//     }
-
-//     // Check if the property is already in favorites
-//     if (!user.favoriteProps.includes(propertyId)) {
-//       // Add the property to favorites
-//       user.favoriteProps.push(propertyId);
-//       await user.save();
-//     }
-
-//     res.status(200).json({ status: 'ok' });
-//   } catch (error) {
-//     console.error('Error adding property to favorites:', error);
-//     res.status(500).json({ status: 'error', error: 'Internal Server Error' });
-//   }
-// });
-
-// // Define an endpoint to remove a property from favorites
-// router.post("/removeFavorite", async (req, res) => {
-//   const { userId, propertyId } = req.body;
-
-//   try {
-//     // Find the user by ID
-//     const user = await User.findById(userId);
-
-//     if (!user) {
-//       return res.status(404).json({ status: 'error', error: 'User not found' });
-//     }
-
-//     // Remove the property from favorites
-//     user.favoriteProps = user.favoriteProps.filter((fav) => fav.toString() !== propertyId);
-//     await user.save();
-
-//     res.status(200).json({ status: 'ok' });
-//   } catch (error) {
-//     console.error('Error removing property from favorites:', error);
-//     res.status(500).json({ status: 'error', error: 'Internal Server Error' });
-//   }
-// });
-
-
-// // Define an endpoint to get a user by ID with favorite properties
-// router.get("/users/:id/favorites", async (req, res) => {
-//   try {
-//     const user = await User.findById(req.params.id).populate('favoriteProps');
-
-//     if (!user) {
-//       return res.status(404).json({ status: 'error', error: 'User not found' });
-//     }
-
-//     res.status(200).json({ favoriteProps: user.favoriteProps });
-//   } catch (error) {
-//     console.error('Error fetching user with favorites:', error);
-//     res.status(500).json({ status: 'error', error: 'Internal Server Error' });
-//   }
-// });
 
 
 

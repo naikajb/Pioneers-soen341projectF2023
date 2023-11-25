@@ -26,12 +26,6 @@ import BrokerOffers from './Components/BrokerOffers'
 import axios from 'axios'
 import { UserContextProvider } from './context/userContext.js';
 
-//Amans above
-
-
-// axios.defaults.baseURL = 'http://localhost:5000';
-// axios.defaults.withCredentials = true;
-
 function App() {
 
   return (

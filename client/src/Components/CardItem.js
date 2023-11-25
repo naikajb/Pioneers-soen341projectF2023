@@ -1,4 +1,3 @@
-
 import React, { useState, useContext, useEffect } from "react";
 import Card from "@mui/material/Card";
 import CardActions from "@mui/material/CardActions";
@@ -20,20 +19,26 @@ function CardItem({ data, toggleFavorite }) {
 
   useEffect(() => {
     const fetchFavorites = async () => {
-      try {
-        if (user && user.id) {
-          // Fetch user favorites only if the user is authenticated
-          const response = await axios.get(`/api/favorites/${user.id}`);
-          const { favoriteProps } = response.data;
-          setIsFavorite(favoriteProps.includes(data._id));
+        try {
+            if (!user || !user.id) {
+                // Reset isFavorite to false when there is no logged-in user
+                setIsFavorite(false);
+                return;
+            }
+
+            // Fetch user favorites
+            const response = await axios.get(`/api/favorites/${user.id}`);
+            const { favoriteProps } = response.data;
+
+            // Check if the property is in the user's favorites
+            setIsFavorite(favoriteProps.includes(data._id));
+        } catch (error) {
+            console.error('Error fetching favorites:', error);
         }
-      } catch (error) {
-        console.error('Error fetching favorites:', error);
-      }
     };
 
     fetchFavorites();
-  }, [user, data._id]);
+}, [user, data._id]);
 
 
   const handleCardClick = () => {

@@ -24,12 +24,16 @@ export function UserContextProvider({ children }) {
 
     const logout = async () => {
         try {
-            await axios.post('/api/logout');
+            console.log('Attempting logout...');
+            // Update the user state to null before making the logout request
             setUser(null);
+            await axios.post('/api/logout');
+            console.log('Logout successful');
         } catch (error) {
             console.error('Error during logout:', error);
         }
     };
+    
 
     return (
         <UserContext.Provider value={{ user, setUser, logout }}>
