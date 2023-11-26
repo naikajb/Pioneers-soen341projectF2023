@@ -16,9 +16,8 @@ function Login() {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
-          
-        },withCredentials:true,
-        
+        },
+        credentials: 'include', // Use 'credentials' instead of 'withCredentials'
         body: JSON.stringify({
           email,
           password,
@@ -29,14 +28,15 @@ function Login() {
   
       if (data.status === 'ok') {
         console.log("Login successful");
-        setUser(data.user); // Update user context with the received user data
-        navigate("/");
-
-        // Fetch user profile after navigating to the home page
-        const profileResponse = await fetch("/api/profile");
-        const profileData = await profileResponse.json();
-        setUser(profileData);
         
+        // Fetch user profile here before setting context and navigating
+        const profileResponse = await fetch("/api/profile", {
+          credentials: 'include', // Make sure to include credentials for cookies to be sent
+        });
+        const profileData = await profileResponse.json();
+  
+        setUser(profileData); // Update user context with the received profile data
+        navigate("/"); // Navigate after context is updated
       } else {
         setError(data.error);
       }
@@ -45,6 +45,7 @@ function Login() {
       setError("Internal server error");
     }
   }
+  
 
   return (
     <div className="loginContainer">
