@@ -113,12 +113,6 @@ function CardItem({ data, toggleFavorite }) {
           </div>
         )}
 
-
-        {/* <div onClick={handleFavoriteClick}>
-          {isFavorite ? <FavoriteIcon color="error" className="favorite" /> : <FavoriteBorderIcon color="error" />}
-        </div> */}
-
-        {/* {!!user && <h2>Hi {user.name}</h2>} */}
       </CardActions>
     </Card>
   );
