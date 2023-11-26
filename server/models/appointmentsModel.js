@@ -1,10 +1,11 @@
 const { ObjectId } = require("mongodb");
 const mongoose = require("mongoose");
 
-const offerSchema = new mongoose.Schema(
+const appointmentSchema = new mongoose.Schema(
     {
-        "price": Number,
         "property": ObjectId,
+        "date": Date,
+        "time": String,
         //"broker": ObjectId,
         //"_id": ObjectId,
         "FirstName": String,
@@ -13,4 +14,4 @@ const offerSchema = new mongoose.Schema(
     }
 );
 
-module.exports = mongoose.model('Offer', offerSchema);
+module.exports = mongoose.model('appointments', appointmentSchema);
