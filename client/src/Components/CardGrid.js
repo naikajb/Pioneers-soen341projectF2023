@@ -73,7 +73,7 @@ function CardGrid() {
         onChange={(e) => setSearchTerm(e.target.value)}
         placeholder="Search properties by location..."
       />
-      {user && (
+      {user && user.type === "buyer" && (
         <button className="favBtn" onClick={() => setShowFavorites(!showFavorites)}>
           {showFavorites ? "All Listings" : "Saved Listings"}
         </button>
