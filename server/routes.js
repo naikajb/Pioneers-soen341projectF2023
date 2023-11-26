@@ -2,6 +2,8 @@ const express = require('express');
 const bcrypt = require('bcrypt');
 const router = express.Router();
 const Property = require('./models/propertiesModel');
+const Offers = require('./models/offersModel');
+const Appointments = require('./models/appointmentsModel');
 const User = require('./models/usersModel');
 const Broker = require('./models/brokerModel');
 const jwt = require("jsonwebtoken");
@@ -242,6 +244,50 @@ router.get("/favorites/:userId", async (req, res) => {
 });
 
 
+//Endpoint for offer management
+app.post("/api/makeOffers", async (req, res) => {
+  try {
+    const existingOffer = await Offers.findOne({ email: req.body.email, property: req.body.property});
+
+    if (existingOffer) {
+      return res.json({ status: 'error', error: 'You can only have 1 offer at a time per property' });
+    }
+    const newOffer = await Offers.create({
+      FirstName: req.body.firstname,
+      LastName: req.body.lastname,
+      email: req.body.email,
+      price: req.body.offer,
+      property: req.body.property
+    });
+
+    res.json({ status: 'ok' });
+  } catch (err) {
+    res.json({ status: 'error', error: 'Offer submission failed' });
+  }
+});
+
+//Endpoint for appointment management
+app.post("/api/bookAppointment", async (req, res) => {
+  try {
+    const existingAppointment = await Appointments.findOne({ property: req.body.property, date: req.body.date, time: req.body.time});
+
+    if (existingAppointment) {
+      return res.json({ status: 'error', error: 'Appointment is taken' });
+    }
+    const newAppointment = await Appointments.create({
+      FirstName: req.body.firstname,
+      LastName: req.body.lastname,
+      email: req.body.email,
+      date: req.body.date,
+      time: req.body.time,
+      property:req.body.property
+    });
+
+    res.json({ status: 'ok' });
+  } catch (err) {
+    res.json({ status: 'error', error: 'Appointment booking failed' });
+  }
+});
 
 module.exports = router;
 
