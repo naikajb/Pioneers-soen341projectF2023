@@ -123,7 +123,7 @@ router.post('/login', async (req, res) => {
     // Compare the provided plain text password with the hashed password in the database
     bcrypt.compare(req.body.password, user.password, async (err, isMatch) => {
       if (err || !isMatch) {
-        return res.json({ status: 'error', user: false, error: "Incorrect email or password" });
+        return res.json({ status: 'error', user: false, error: "Incorrect password" });
       }
 
       // sign a web token (cookie) to the user so you can track them throughout the web app

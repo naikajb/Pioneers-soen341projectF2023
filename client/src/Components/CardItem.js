@@ -102,9 +102,13 @@ function CardItem({ data, toggleFavorite }) {
             {data.bathroom} Bathrooms
           </Button>
         </div>
+{/* {user && user.type == "buyer" ? (<div onClick={handleFavoriteClick}>
+          {isFavorite ? <FavoriteIcon color="error" className="favorite" /> : <FavoriteBorderIcon color="error" />}
+        </div>) : (<h2>Hi</h2>)} */}
         <div onClick={handleFavoriteClick}>
           {isFavorite ? <FavoriteIcon color="error" className="favorite" /> : <FavoriteBorderIcon color="error" />}
         </div>
+
         {!!user && <h2>Hi {user.name}</h2>}
       </CardActions>
     </Card>
