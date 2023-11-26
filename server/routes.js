@@ -138,7 +138,8 @@ router.post('/login', async (req, res) => {
           console.error("Error signing JWT:", err);
           return res.status(500).json({ status: 'error', error: 'Internal server error' });
         }
-        res.cookie('token', token).json({ status: 'ok', user, token }); // Include 'status' field in the response
+        //res.cookie('token', token).json(user);
+        res.cookie('token', token).json({ user, token }); // Send both user and token in the response
       });
     });
   } catch (err) {
@@ -146,7 +147,6 @@ router.post('/login', async (req, res) => {
     res.status(500).json({ status: 'error', error: 'Internal server error' });
   }
 });
-
 
 
 // Define an endpoint to fetch brokers (naika)
@@ -160,7 +160,7 @@ router.get("/brokers", async (req, res) => {
 router.get("/Profile", async(req, res) => {
   const {token} = req.cookies
   if(token) {
-    jwt.verify(token, process.env.JWT_SECRET, {}, (err, user) => {
+    jwt.verify(token, JWT_KEY, {}, (err, user) => {
       if(err) throw err;
       res.json(user)
     })
