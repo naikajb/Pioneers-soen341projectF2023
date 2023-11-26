@@ -13,8 +13,8 @@ mongoose.connect("mongodb+srv://admin:zhpEohWXSzyKgQMH@cluster0.0l0riwk.mongodb.
 const Property = require('./models/propertiesModel');
 const User = require('./models/usersModel');
 // const Broker = require('./models/brokersModel'); //naika
-const Broker = require('./models/brokerModel');
-//Amans Brokerlist
+const Broker = require('./models/brokerModel');   //Amans Brokerlist
+const Offers = require('./models/offersModel'); //Offers
 
 
 // Define an endpoint to fetch brokers
@@ -118,6 +118,29 @@ app.get("/api/brokers", async (req, res) => {
   const brokers = await Broker.find().exec();
   console.log("Fetched data from MongoDB:", brokers);
   res.json(brokers);
+});
+
+
+//Endpoint for offer management
+app.post("/api/makeOffers", async (req, res) => {
+  try {
+    const existingOffer = await Offers.findOne({ email: req.body.email, property: req.body.property});
+
+    if (existingOffer) {
+      return res.json({ status: 'error', error: 'You can only have 1 offer at a time per property' });
+    }
+    const newOffer = await Offers.create({
+      FirstName: req.body.firstname,
+      LastName: req.body.lastname,
+      email: req.body.email,
+      price: req.body.offer,
+      property: req.body.property
+    });
+
+    res.json({ status: 'ok' });
+  } catch (err) {
+    res.json({ status: 'error', error: 'Offer submission failed' });
+  }
 });
 
 //port

@@ -9,6 +9,11 @@ function ListingDetails() {
   const location = useLocation();
   const { id } = location.state || {};
   const [listing, setListing] = useState(null);
+  const [error, setError] = useState(null);
+  const [email, setEmail] = useState();
+  const [firstname, setFirstName] = useState();
+  const [lastname, setLastName] = useState();
+  const [offer, setOffer] = useState();
 
   //fetch property details to be displayed for property that was clicked (id)
   const fetchProperty = async () => {
@@ -41,7 +46,43 @@ function ListingDetails() {
     email: '',
     appointmentDate: '',
     time: '',
+    property: id
   });
+  
+
+  async function makeOffer(event) {
+    event.preventDefault();
+    try {
+      const response = await fetch("/api/makeOffers", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+
+        },withCredentials:true,
+
+        body: JSON.stringify({
+          email,
+          firstname,
+          lastname,
+          offer
+        }),
+      });
+
+
+      const data = await response.json();
+
+      if (response.ok) {
+        console.log("Offer Made");
+        setError("Offer Made")
+
+      } else {
+        setError(data.error);
+      }
+    } catch (error) {
+      console.error("Error during making offer:", error);
+      setError("Internal server error");
+    }
+  }
 
   const openPopup = () => {
     setPopupOpen(true);
@@ -102,9 +143,9 @@ function ListingDetails() {
             {/* Add more broker details as needed */}
           </div>
           <button className="cta-button" button data-testid = "BookAppointment" onClick={openPopup}>
-            
             Book an Appointment
           </button>
+          
               {isPopupOpen && (
             <div id="popup" className="popup">
               <div className="popup-content">
@@ -163,30 +204,30 @@ function ListingDetails() {
                 <span className="close" onClick={closePopup2}>&times;</span>
                 <h2 className="section-title">Make an Offer</h2>
                 <form>
-                  {/* Add your form fields here */}
+                <header> {error && <div className="error-message">{error}</div>}</header>
                   <div className="form-group">
                     <label htmlFor="firstname">First Name:</label>
-                    <input type="text" id="firstname" name="firstname" required />
+                    <input type="text" id="firstname" name="firstname" required  value={firstname} onChange={(e) => setFirstName(e.target.value)}/>
                   </div>
 
                   <div className="form-group">
                     <label htmlFor="lastname">Last Name:</label>
-                    <input type="text" id="lastname" name="lastname" required />
+                    <input type="text" id="lastname" name="lastname" required  value={lastname} onChange={(e) => setLastName(e.target.value)}/>
                   </div>
 
                   <div className="form-group">
                     <label htmlFor="email">Email:</label>
-                    <input type="email" id="email" name="email" required />
+                    <input type="email" id="email" name="email" required value={email} onChange={(e) => setEmail(e.target.value)}/>
                   </div>
                   
                   <div className="form-group">
                     <label htmlFor="offer">Offer:</label>
-                    <input type="text" id="offer" name="offer" required />
+                    <input type="text" id="offer" name="offer" required  value={offer} onChange={(e) => setOffer(e.target.value)}/>
                   </div>
                   
 
                   <div className="form-group">
-                    <button className="cta-button" type="submit">Submit</button>
+                    <button className="cta-button" type="submit" onClick={makeOffer}>Submit</button>
                   </div>
                 </form>
               </div>
