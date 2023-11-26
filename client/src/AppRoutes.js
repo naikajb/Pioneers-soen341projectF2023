@@ -44,7 +44,7 @@ function AppRoutes() {
 
 
       { /* Private Admin Routes */}
-      <Route path="/broker" element={<div><Navbar /><BrokersList /><Footer /></div>} />
+      <Route path="/broker" element={<div style={{ backgroundColor: '#333' }}><Navbar /><BrokersList /><Footer /></div>} />
 
   
     </Routes>

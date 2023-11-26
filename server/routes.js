@@ -150,11 +150,11 @@ router.post('/login', async (req, res) => {
 
 
 // Define an endpoint to fetch brokers (naika)
-router.get("/brokers", async (req, res) => {
-  const brokers = await Broker.find().exec();
-  console.log("Fetched data from MongoDB:", brokers);
-  res.json(brokers);
-});
+// router.get("/brokers", async (req, res) => {
+//   const brokers = await Broker.find().exec();
+//   console.log("Fetched data from MongoDB:", brokers);
+//   res.json(brokers);
+// });
 
 // Define an endpoint that gets the profile of the current logged in user
 router.get("/Profile", async(req, res) => {
