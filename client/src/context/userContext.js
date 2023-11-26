@@ -10,10 +10,12 @@ export function UserContextProvider({ children }) {
     useEffect(() => {
         const fetchUserProfile = async () => {
             try {
-                const { data } = await axios.get('/api/profile');
-                setUser(data);
+            
+                    const { data } = await axios.get('/api/profile');
+                    setUser(data);
             } catch (error) {
                 console.error('Error fetching user profile:', error);
+                setUser(null);
             }
         };
 
@@ -27,6 +29,10 @@ export function UserContextProvider({ children }) {
             console.log('Attempting logout...');
             // Update the user state to null before making the logout request
             setUser(null);
+
+            // Clear cookies
+        document.cookie = 'token=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;';
+
             await axios.post('/api/logout');
             console.log('Logout successful');
         } catch (error) {
