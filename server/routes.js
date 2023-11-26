@@ -245,7 +245,7 @@ router.get("/favorites/:userId", async (req, res) => {
 
 
 //Endpoint for offer management
-app.post("/api/makeOffers", async (req, res) => {
+router.post("/makeOffers", async (req, res) => {
   try {
     const existingOffer = await Offers.findOne({ email: req.body.email, property: req.body.property});
 
@@ -267,7 +267,7 @@ app.post("/api/makeOffers", async (req, res) => {
 });
 
 //Endpoint for appointment management
-app.post("/api/bookAppointment", async (req, res) => {
+router.post("/bookAppointment", async (req, res) => {
   try {
     const existingAppointment = await Appointments.findOne({ property: req.body.property, date: req.body.date, time: req.body.time});
 
