@@ -35,7 +35,7 @@ const MortgageCalculatorPopup = ({ onClose }) => {
   };
 
   return (
-    <div className="popup">
+    <div className="popup" data-testid="MortgageCalculatorPopup">
         <div className="popup-content">
       <span className="close" onClick={onClose}>&times;</span>
 

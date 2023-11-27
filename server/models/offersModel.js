@@ -9,7 +9,8 @@ const offerSchema = new mongoose.Schema(
         //"_id": ObjectId,
         "FirstName": String,
         "LastName": String,
-        "email": String
+        "email": String,
+        "status": String
     }
 );
 

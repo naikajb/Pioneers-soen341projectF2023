@@ -1,16 +1,26 @@
-import React, { useContext } from "react";
+import React, { useContext,useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { UserContext } from '../context/userContext.js';
 import logo from './images/logo.png';
 import accountIcon from './images/test.png';
+import MortgageCalculator from './mortgageCalculator';
 
 function NavbarBuyer() {
   const { logout, user } = useContext(UserContext);
+  const [isPopupOpen, setPopupOpen] = useState(false);
   const navigate = useNavigate();
 
   const handleLogout = async () => {
     await logout();
     navigate("/login");
+  };
+
+  const openPopup = () => {
+    setPopupOpen(true);
+  };
+
+  const closePopup = () => {
+    setPopupOpen(false);
   };
 
   return (
@@ -26,6 +36,10 @@ function NavbarBuyer() {
         </p>
       </a>
       <ul>
+        <div>
+          <li className="Navlinks" data-testid = "MortgageCalculator" onClick={openPopup}>MortgageCalculator</li>
+          {isPopupOpen && <MortgageCalculator/>}
+        </div>
         <a href="/searchBrokers">
           <li className="Navlinks">Find Brokers</li>
         </a>

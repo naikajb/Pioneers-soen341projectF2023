@@ -44,4 +44,19 @@ test('Clicking on the Book An Appointment button shows you the popup', () => {
     const manageOffersPage = screen.getByText(/Submit/i);
     expect(manageOffersPage).toBeInTheDocument();
   });
+
+  test('Clicking MortgageCalculator opens the popup', () => {
+    // Render the NavbarBuyer component
+    render(
+      // Wrap your component with MemoryRouter
+      <MemoryRouter>
+        <NavbarBuyer />
+      </MemoryRouter>
+    );
   
+    // Click the "MortgageCalculator" link
+    fireEvent.click(screen.getByTestId('MortgageCalculator'));
+  
+    // Assertions
+    expect(screen.getByTestId('MortgageCalculatorPopup')).toBeInTheDocument();
+  });
