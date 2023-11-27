@@ -63,7 +63,7 @@ test('Clicking on the Book An Appointment button shows you the popup', () => {
     expect(screen.getByTestId('MortgageCalculatorPopup')).toBeInTheDocument();
   });
 
-  test('Clicking "Manage Offers" in the navbar should navigate to the ManageOffers page', () => {
+  test('Clicking "Manage Offers" in the navbar should navigate to the ManageOffers page', async () => {
     render(
       <Router>
         <NavbarBroker />
@@ -73,13 +73,11 @@ test('Clicking on the Book An Appointment button shows you the popup', () => {
   
     // Find the "Manage Offers" link and click it
     fireEvent.click(screen.getByTestId('ManageOffers'));
-  
-    // // Verify that the ManageOffers page is loaded
-    // const manageOffersTitle = screen.getByText('Manage Offers');
-    // expect(manageOffersTitle).toBeInTheDocument();
 
     // Use getByTestId to get the element with the unique identifier
-  const manageOffersPage = screen.getByTestId('manage-offers-page');
+  //const manageOffersPage = screen.getByTestId('manage-offers-page');
+  const manageOffersPage = await screen.findByTestId('manage-offers-page');
+
 
   // Verify that the ManageOffers page is loaded
   expect(manageOffersPage).toBeInTheDocument();
