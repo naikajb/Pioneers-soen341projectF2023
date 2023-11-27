@@ -17,6 +17,6 @@ mongoose.connect("mongodb+srv://admin:zhpEohWXSzyKgQMH@cluster0.0l0riwk.mongodb.
 app.use('/api', routes);
 
 //Port
-app.listen(5000, () => {
+app.listen(5001, () => {
   console.log("Server running on port 5000");
 });
