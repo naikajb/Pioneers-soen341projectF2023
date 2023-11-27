@@ -97,39 +97,11 @@ const dummyOffers = [
     LastName: "Doe",
     email: "test@mail.com",
   },
-    // {id: 2,
-    // property: "1234 Main St",
-    // offer: 1000,
-    // user: "Test User",
-    // status: "Pending",
-    // broker: "Jane Doe"},
-
-    // {id: 3,
-    // property: "13 Main St",
-    // offer: 100000,
-    // user: "Test User",
-    // status: "Pending",
-    // broker: "John Doe"},
-
-    // {id: 4,
-    //     property: "12 Main St",
-    //     offer: 100000,
-    //     user: "Test User",
-    //     status: "Pending",
-    //     broker: "John Doe"},
-        
-    // {id: 5,
-    //   property: "12 Main St",
-    //   offer: 100000,
-    //   user: "Test User",
-    //   status: "Pending",
-    //   broker: "John Doe"
-    // }
 
 ]
 
 const contactBroker = (buyer, offer) => {
-  const subject = `Negotiating Offer for Property: ${offer.property}`;
+  const subject = `Negotiating Offer for Property: ${offer.property.address}`;
   const brokerEmail = "test@mail.com";
   const message = `Hello, I am interested in negotiating the offer for the property ${offer.property}. 
                     Please let me know if we can discuss the terms and conditions. Thank you.`;
@@ -141,25 +113,25 @@ const contactBroker = (buyer, offer) => {
 function ManageOffers() {
 
   const [offers, setOffers] = useState(dummyOffers);
-  const  user = {name: "Test Broker"};
-
+  //const  user = {name: "Test Broker"};
+  const { user } = useContext(UserContext);
   const [loading, setLoading] = useState(true);
 
     useEffect(() => {
         setLoading(true);
-        axios.get('http://localhost:5000/offers')
+        axios.get('/api/offers')
             .then((res) => {
                 setOffers(res.data);
                 setLoading(false);
             })
             .catch((err) => {
-                console.log(err);
+                console.log("Error fetching the offers", err);
             });
     }, []);
 
-    // if (loading) {
-    //     return <p>Loading offers...</p>;
-    // }
+    if (loading) {
+        return <p className="loading-offers">Loading offers...</p>;
+    }
     const groupedOffers = {};
     offers.forEach((offer) => {
       if(offer.property.broker.name === user.name){ //only show offers for properties that logged in broker owns
