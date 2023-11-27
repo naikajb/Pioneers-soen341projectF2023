@@ -52,6 +52,7 @@ import NavbarBroker from './NavbarBroker';
 import NavbarAdmin from './NavbarAdmin';
 import logo from './images/logo.png';
 
+
 function Navbar() {
   const { user } = useContext(UserContext);
 
