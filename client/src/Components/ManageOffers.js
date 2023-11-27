@@ -1,125 +1,131 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { Button, Form } from "react-bootstrap";
 import { v4 as uuid } from "uuid";
 import { Link, useNavigate } from "react-router-dom";
+
 {/*import "bootstrap/dist/css/bootstrap.min.css";*/ }
 
 const dummyOffers = [
-    {id: 1,
-    property: "1234 Main St",
-    offer: 100000,
-    user: "Test User",
-    status: "Pending",
-    broker: "John Doe"},
+  {
+    id: 1,
+    price:1000000,
+    property: {
+      price: 900000, 
+        address: "123 main street",
+        bedroom: 3,
+        bathroom: 3,
+        amenities: ["pool", "gym", "parking"],
+        broker: { 
+            name: "Test Broker", 
+            contact: "test@broker",
+        },
+        image: "",
+    },
+    //"broker": ObjectId,
+    //"_id": ObjectId,
+    FirstName: "John",
+    LastName: "Doe",
+    email: "test@mail.com",
+  },
 
-    {id: 2,
-    property: "1234 Main St",
-    offer: 1000,
-    user: "Test User",
-    status: "Pending",
-    broker: "Jane Doe"},
+    // {id: 2,
+    // property: "1234 Main St",
+    // offer: 1000,
+    // user: "Test User",
+    // status: "Pending",
+    // broker: "Jane Doe"},
 
-    {id: 3,
-    property: "13 Main St",
-    offer: 100000,
-    user: "Test User",
-    status: "Pending",
-    broker: "John Doe"},
+    // {id: 3,
+    // property: "13 Main St",
+    // offer: 100000,
+    // user: "Test User",
+    // status: "Pending",
+    // broker: "John Doe"},
 
-    {id: 4,
-        property: "12 Main St",
-        offer: 100000,
-        user: "Test User",
-        status: "Pending",
-        broker: "John Doe"},
+    // {id: 4,
+    //     property: "12 Main St",
+    //     offer: 100000,
+    //     user: "Test User",
+    //     status: "Pending",
+    //     broker: "John Doe"},
+        
+    // {id: 5,
+    //   property: "12 Main St",
+    //   offer: 100000,
+    //   user: "Test User",
+    //   status: "Pending",
+    //   broker: "John Doe"
+    // }
+
 ]
 
+const contactBroker = (buyer, offer) => {
+  const subject = `Negotiating Offer for Property: ${offer.property}`;
+  const brokerEmail = "test@mail.com";
+  const message = `Hello, I am interested in negotiating the offer for the property ${offer.property}. 
+                    Please let me know if we can discuss the terms and conditions. Thank you.`;
+  
+  const mailtoLink = `mailto:${brokerEmail}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(message)}`;
+  window.open(mailtoLink);
+}
 function ManageOffers() {
-
-    // const [offers, setOffers] = useState([]);
+    const [offers, setOffers] = useState(dummyOffers);
     // const [loading, setLoading] = useState(true);
 
-    // const fetchData = async () => {
-    //     try {
-    //         const response = await fetch("http://localhost:5000/api/offers");
-    //         const data = await response.json();
-    //         setOffers(data);
-    //         setLoading(false);
-    //     } catch (error) {
-    //         console.log("error fetching offers", error);
-    //     } finally {
-    //         setLoading(false);
-    //     }
+    // useEffect(() => {
+    //     setLoading(true);
+    //     axios.get('http://localhost:5000/offers')
+    //         .then((res) => {
+    //             setOffers(res.data);
+    //             setLoading(false);
+    //         })
+    //         .catch((err) => {
+    //             console.log(err);
+    //         });
+    // }, []);
 
-    // };
-
-    // React.useEffect(() => {
-    //     axios.get('/api/broker/offers')
-    //       .then((response) => {
-    //         setOffers(response.data);
-    //         setLoading(false);
-    //       })
-    //       .catch((error) => {
-    //         console.error('Error fetching offers:', error);
-    //         setLoading(false);
-    //       });
-    //   }, []);
-
-    // return (
-    //     {/*<div>
-    //         <h1>Manage Offers</h1>
-    //         {loading ? (
-    //             <div>Loading...</div>
-    //         ) : (
-    //             <div>
-    //                 <h2> Offers Received</h2>
-    //                 <ul>
-    //                     {offers.map((offer) => (
-    //                         <li key={offer.id}>
-    //                             <div>
-    //                                 <strong>Property Name:</strong> {offer.propertyName}
-    //                             </div>
-    //                             <div>
-    //                                 <strong>Offer Amount:</strong> {offer.offerAmount}
-    //                             </div>
-    //                             {/* Display other offer details */
-    //                         /*</li>
-    //                     ))}
-    //                 </ul>
-    //             </div>
-    //                     )}
-        
-    //     </div>*/}
-        
-    // );
-    const [offers, setOffers] = useState(dummyOffers);
+    // if (loading) {
+    //     return <p>Loading offers...</p>;
+    // }
     const groupedOffers = {};
-    dummyOffers.forEach((offer) => {
+    offers.forEach((offer) => {
         if (!groupedOffers[offer.property]) {
             groupedOffers[offer.property] = [];
         }
         groupedOffers[offer.property].push(offer);
     });
 
-    const handleAcceptReject = (property,action) =>{
+    // const [offers, setOffers] = useState();
+    // const groupedOffers = {};
+    // dummyOffers.forEach((offer) => {
+    //     if (!groupedOffers[offer.property]) {
+    //         groupedOffers[offer.property] = [];
+    //     }
+    //     groupedOffers[offer.property].push(offer);
+    // });
+
+    const handleAcceptReject = (selectedOffer, action) =>{
         const updatedOffers = offers.map((offer) => {
-            if(offer.property === property){
-                if(action === "Accept"){
-                return {...offer, status: "Accepted"};
-                }else if(action === "Reject"){
-                    return {...offer, status: "Rejected"};
+            if (offer.id === selectedOffer.id) {
+                if (action === "accept") {
+                    offer.status = "Accepted";
+                } else {
+                    offer.status = "Rejected";
                 }
+            }else{
+              if(action === "accept" && offer.property === selectedOffer.property){
+                offer.status = "Rejected";
+              }
             }
             return offer;
         });
         setOffers(updatedOffers);
     }
 
-
     return(
         <div>
-            <h1>Manage Offers</h1>
+            <h1 className="title-offers-page">Manage Offers</h1>
             {Object.entries(groupedOffers).map(([property, offers]) => (
                 <div className = "offers" key = {property}>
                 <h2>{property}</h2>
@@ -131,16 +137,17 @@ function ManageOffers() {
                           <p><b>Status: </b>{offer.status}</p>
                           {offer.status === "Pending" ? (
                             <div>
+                              <button className="contact-butt" onClick={() => contactBroker(offer.buyer, offer)}>Contact Broker</button>
                               <button
                               className="accept-butt"
-                                onClick={() => handleAcceptReject(offer.property,"accept")}
+                                onClick={() => handleAcceptReject(offer,"accept")}
                                 disabled={offers.some((o) => o.property === offer.property && o.status === "Accepted")}
                               >
                                 Accept
                               </button>
                               <button
                                 className="reject-butt"
-                                onClick={() => handleAcceptReject(offer.property,"reject")}
+                                onClick={() => handleAcceptReject(offer,"reject")}
                                 disabled={offers.some((o) => o.property === offer.property && o.status === "Accepted")}
                               >
                                 Reject
@@ -157,23 +164,6 @@ function ManageOffers() {
                 </div>
                 
             ))}
-            {/*<table>
-                <tr>
-                    <th>Property</th>
-                    <th>Offer</th>
-                    <th>Status</th>
-                    <th>Broker</th>
-                </tr>
-
-                {dummyOffers.map((offer) => (
-                    <tr key={offer.id}>
-                        <td>{offer.property}</td>
-                        <td>{offer.offer}</td>
-                        <td>{offer.status}</td>
-                        <td>{offer.broker}</td>
-                    </tr>
-                ))}
-                </table>*/}
         </div>
     );
 }
