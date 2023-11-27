@@ -82,3 +82,5 @@ test('Clicking on the Book An Appointment button shows you the popup', () => {
   // Verify that the ManageOffers page is loaded
   expect(manageOffersPage).toBeInTheDocument();
   });
+
+  //test
