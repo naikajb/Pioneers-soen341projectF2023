@@ -10,37 +10,37 @@ import { UserContext } from "../context/userContext.js";
 const dummyOffers = [
   {
     id: 1,
-    price: 1000000,
+    price: 600000,
     property: {
-      price: 900000,
-      address: "123 main street",
-      bedroom: 3,
-      bathroom: 3,
-      amenities: ["pool", "gym", "parking"],
+      price: 599999,
+      address: "1700 Blvd. De Maisonneuve Ouest",
+      bedroom: 6,
+      bathroom: 4,
+      amenities: ["pool", "garden", "Garage"],
       broker: {
-        name: "Test Broker",
-        contact: "test@broker",
+        name: "John Doe",
+        contact: "jdoe@broker.com",
       },
       image: "",
     },
     status: "Pending",
     //"broker": ObjectId,
     //"_id": ObjectId,
-    FirstName: "John",
+    FirstName: "Jane",
     LastName: "Doe",
     email: "test@mail.com",
   },
   {
     id: 2,
-    price: 100000,
+    price: 1045657,
     property: {
-      price: 90000,
-      address: "1234 main street",
-      bedroom: 3,
+      price: 1045657,
+      address: "1455 Blvd. De Maisonneuve Ouest",
+      bedroom: 4,
       bathroom: 3,
       amenities: ["pool", "gym", "parking"],
       broker: {
-        name: "Test",
+        name: "John Doe",
         contact: "test@broker",
       },
       image: "",
@@ -48,21 +48,21 @@ const dummyOffers = [
     //"broker": ObjectId,
     //"_id": ObjectId,
     status: "Pending",
-    FirstName: "Joh",
-    LastName: "Doe",
+    FirstName: "Michael",
+    LastName: "Scott",
     email: "jdoe@mai.com",
   },
   {
     id: 3,
-    price: 100000,
+    price: 234567,
     property: {
       price: 90000,
-      address: "1234 main street",
+      address: "1200 Blvd. De Maisonneuve Ouest",
       bedroom: 3,
       bathroom: 3,
       amenities: ["pool", "gym", "parking"],
       broker: {
-        name: "Test Broker",
+        name: "John Doe",
         contact: "test@broker",
       },
       image: "",
@@ -70,22 +70,22 @@ const dummyOffers = [
     status: "Pending",
     //"broker": ObjectId,
     //"_id": ObjectId,
-    FirstName: "John",
-    LastName: "Doe",
+    FirstName: "Alice",
+    LastName: "Doyle",
     email: "test@mail.com",
   },
 
   {
     id: 4,
-    price: 10000,
+    price: 760000,
     property: {
-      price: 90000,
-      address: "1234 main street",
+      price: 780500,
+      address: "1500 Atwater Avenue",
       bedroom: 3,
       bathroom: 3,
       amenities: ["pool", "gym", "parking"],
       broker: {
-        name: "Test Broker",
+        name: "John Doe",
         contact: "test@broker",
       },
       image: "",
@@ -94,7 +94,95 @@ const dummyOffers = [
     //"broker": ObjectId,
     //"_id": ObjectId,
     FirstName: "John",
-    LastName: "Doe",
+    LastName: "Mayer",
+    email: "test@mail.com",
+  },
+  {
+    id: 5,
+    price: 500000,
+    property: {
+      price: 515000,
+      address: "1200 Blvd. De Maisonneuve Ouest",
+      bedroom: 3,
+      bathroom: 3,
+      amenities: ["pool", "gym", "parking"],
+      broker: {
+        name: "John Doe",
+        contact: "test@broker",
+      },
+      image: "",
+    },
+    status: "Pending",
+    //"broker": ObjectId,
+    //"_id": ObjectId,
+    FirstName: "Asmae",
+    LastName: "Loulidi",
+    email: "test@mail.com",
+  },
+  {
+    id: 6,
+    price: 560000,
+    property: {
+      price: 515000,
+      address: "1200 Blvd. De Maisonneuve Ouest",
+      bedroom: 3,
+      bathroom: 3,
+      amenities: ["pool", "gym", "parking"],
+      broker: {
+        name: "John Doe",
+        contact: "test@broker",
+      },
+      image: "",
+    },
+    status: "Pending",
+    //"broker": ObjectId,
+    //"_id": ObjectId,
+    FirstName: "Muiz",
+    LastName: "Madadi",
+    email: "test@mail.com",
+  },
+  {
+    id: 7,
+    price: 765000,
+    property: {
+      price: 780500,
+      address: "1500 Atwater Avenue",
+      bedroom: 3,
+      bathroom: 3,
+      amenities: ["pool", "gym", "parking"],
+      broker: {
+        name: "John Doe",
+        contact: "test@broker",
+      },
+      image: "",
+    },
+    status: "Pending",
+    //"broker": ObjectId,
+    //"_id": ObjectId,
+    FirstName: "Oscar",
+    LastName: "De La Hoya",
+    email: "test@mail.com",
+  },
+  {
+    id: 8,
+    price: 27000,
+    property: {
+      price: 90000,
+      address: "1200 Blvd. De Maisonneuve Ouest",
+      bedroom: 3,
+      bathroom: 3,
+      amenities: ["pool", "gym", "parking"],
+      broker: {
+        name: "John Doe",
+        contact: "test@broker",
+      },
+      image: "",
+    },
+    status: "Pending",
+    //"broker": ObjectId,
+    //"_id": ObjectId,
+    FirstName: "Amber",
+    LastName: "Rose",
     email: "test@mail.com",
   },
 
@@ -111,9 +199,9 @@ const contactBroker = (buyer, offer) => {
 }
 
 function ManageOffers() {
-  //const  user = {name: "Test Broker"};
-  const [offers, setOffers] = useState([]);
-  const { user } = useContext(UserContext);
+  const  user = {name: "John Doe"};
+  const [offers, setOffers] = useState(dummyOffers);
+  //const { user } = useContext(UserContext);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
@@ -125,6 +213,7 @@ function ManageOffers() {
       })
       .catch((err) => {
         console.log("Error fetching the offers", err);
+        setLoading(false);
       });
   }, []);
 
