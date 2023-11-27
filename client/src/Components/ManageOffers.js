@@ -119,7 +119,7 @@ function ManageOffers() {
 
     return(
         <div>
-            <h1>Manage Offers</h1>
+            <h1 data-testid="manage-offers-page">Manage Offers</h1>
             {Object.entries(groupedOffers).map(([property, offers]) => (
                 <div className = "offers" key = {property}>
                 <h2>{property}</h2>

@@ -26,7 +26,7 @@ function NavbarBroker() {
         </p>
       </a>
       <ul>
-        <a href="/manageOffers">
+        <a href="/manageOffers" data-testid="ManageOffers">
           <li className="Navlinks">Manage Offers</li>
         </a>
         <a href="/editProp">

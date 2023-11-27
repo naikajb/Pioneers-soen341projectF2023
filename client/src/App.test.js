@@ -8,6 +8,8 @@ import {toBeInTheDocument} from '@testing-library/jest-dom';
 import NavbarBroker from './Components/NavbarBroker.js';
 import ListingDetails from './Components/listing.js';
 import { MemoryRouter } from 'react-router-dom';
+import { BrowserRouter as Router } from 'react-router-dom';
+import ManageOffers from './Components/ManageOffers';
 
 test('App renders correctly', () => {
     const { getByTestId } = render(
@@ -59,4 +61,26 @@ test('Clicking on the Book An Appointment button shows you the popup', () => {
   
     // Assertions
     expect(screen.getByTestId('MortgageCalculatorPopup')).toBeInTheDocument();
+  });
+
+  test('Clicking "Manage Offers" in the navbar should navigate to the ManageOffers page', () => {
+    render(
+      <Router>
+        <NavbarBroker />
+        <ManageOffers />
+      </Router>
+    );
+  
+    // Find the "Manage Offers" link and click it
+    fireEvent.click(screen.getByTestId('ManageOffers'));
+  
+    // // Verify that the ManageOffers page is loaded
+    // const manageOffersTitle = screen.getByText('Manage Offers');
+    // expect(manageOffersTitle).toBeInTheDocument();
+
+    // Use getByTestId to get the element with the unique identifier
+  const manageOffersPage = screen.getByTestId('manage-offers-page');
+
+  // Verify that the ManageOffers page is loaded
+  expect(manageOffersPage).toBeInTheDocument();
   });
