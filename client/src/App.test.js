@@ -8,6 +8,8 @@ import {toBeInTheDocument} from '@testing-library/jest-dom';
 import NavbarBroker from './Components/NavbarBroker.js';
 import ListingDetails from './Components/listing.js';
 import { MemoryRouter } from 'react-router-dom';
+import { BrowserRouter as Router } from 'react-router-dom';
+import ManageOffers from './Components/ManageOffers';
 
 test('App renders correctly', () => {
     const { getByTestId } = render(
@@ -43,4 +45,40 @@ test('Clicking on the Book An Appointment button shows you the popup', () => {
   
     const manageOffersPage = screen.getByText(/Submit/i);
     expect(manageOffersPage).toBeInTheDocument();
+  });
+
+  test('Clicking MortgageCalculator opens the popup', () => {
+    // Render the NavbarBuyer component
+    render(
+      // Wrap your component with MemoryRouter
+      <MemoryRouter>
+        <NavbarBuyer />
+      </MemoryRouter>
+    );
+  
+    // Click the "MortgageCalculator" link
+    fireEvent.click(screen.getByTestId('MortgageCalculator'));
+  
+    // Assertions
+    expect(screen.getByTestId('MortgageCalculatorPopup')).toBeInTheDocument();
+  });
+
+  test('Clicking "Manage Offers" in the navbar should navigate to the ManageOffers page', async () => {
+    render(
+      <Router>
+        <NavbarBroker />
+        <ManageOffers />
+      </Router>
+    );
+  
+    // Find the "Manage Offers" link and click it
+    fireEvent.click(screen.getByTestId('ManageOffers'));
+
+    // Use getByTestId to get the element with the unique identifier
+  //const manageOffersPage = screen.getByTestId('manage-offers-page');
+  const manageOffersPage = await screen.findByTestId('manage-offers-page');
+
+
+  // Verify that the ManageOffers page is loaded
+  expect(manageOffersPage).toBeInTheDocument();
   });

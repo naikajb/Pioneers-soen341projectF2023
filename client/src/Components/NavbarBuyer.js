@@ -37,7 +37,7 @@ function NavbarBuyer() {
       </a>
       <ul>
         <div>
-          <li className="Navlinks" onClick={openPopup}>MortgageCalculator</li>
+          <li className="Navlinks" data-testid = "MortgageCalculator" onClick={openPopup}>MortgageCalculator</li>
           {isPopupOpen && <MortgageCalculator/>}
         </div>
         <a href="/searchBrokers">

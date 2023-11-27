@@ -251,39 +251,39 @@ function ManageOffers() {
     setOffers(updatedOffers);
   }
 
-  return (
-    <div>
-      <h1 className="title-offers-page">Manage Offers</h1>
-      {Object.entries(groupedOffers).map(([property, offers]) => (
-        <div className="offers" key={property}>
-          <ul>
-            {offers.map((offer, index) => (
-              <li className="offer-detail" key={index}>
-                <p><b>Property: </b>{offer.property.address}</p>
-                <p><b>Amount: </b>{offer.price}$</p>
-                <p><b>Buyer: </b>{offer.LastName}, {offer.FirstName}</p>
-                <p><b>Status: </b>pending</p>
-                {offer.status === "Pending" ? (
-                  <div>
-                    <button className="contact-butt" onClick={() => contactBroker(offer.buyer, offer)}>Contact Broker</button>
-                    <button
-                      className="accept-butt"
-                      onClick={() => handleAcceptReject(offer, "accept")}
-                      disabled={offers.some((o) => o.property === offer.property && o.status === "Accepted")}
-                    >
-                      Accept
-                    </button>
-                    <button
-                      className="reject-butt"
-                      onClick={() => handleAcceptReject(offer, "reject")}
-                      disabled={offers.some((o) => o.property === offer.property && o.status === "Accepted")}
-                    >
-                      Reject
-                    </button>
-                  </div>
-                ) : (
-                  <p>Offer already {offer.status}</p>
-                )}
+
+    return(
+        <div>
+            <h1 data-testid="manage-offers-page" className="title-offers-page">Manage Offers</h1>
+            {Object.entries(groupedOffers).map(([property, offers]) => (
+                <div className = "offers" key = {property}>
+                <h2>{property}</h2>
+                <ul>
+                    {offers.map((offer,index) => (
+                        <li className = "offer-detail" key = {index}>
+                          <p><b>Amount: </b>{offer.offer}$</p>
+                          <p><b>Buyer: </b>{offer.user}</p>
+                          <p><b>Status: </b>{offer.status}</p>
+                          {offer.status === "Pending" ? (
+                            <div>
+                              <button
+                              className="accept-butt"
+                                onClick={() => handleAcceptReject(offer.property,"accept")}
+                                disabled={offers.some((o) => o.property === offer.property && o.status === "Accepted")}
+                              >
+                                Accept
+                              </button>
+                              <button
+                                className="reject-butt"
+                                onClick={() => handleAcceptReject(offer.property,"reject")}
+                                disabled={offers.some((o) => o.property === offer.property && o.status === "Accepted")}
+                              >
+                                Reject
+                              </button>
+                            </div>
+                          ) : (
+                            <p>Offer already {offer.status}</p>
+                          )}
 
               </li>
 
