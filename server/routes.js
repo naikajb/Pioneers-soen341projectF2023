@@ -257,7 +257,8 @@ router.post("/makeOffers", async (req, res) => {
       LastName: req.body.lastname,
       email: req.body.email,
       price: req.body.offer,
-      property: req.body.property
+      property: req.body.property,
+      status: "pending"
     });
 
     res.json({ status: 'ok' });
