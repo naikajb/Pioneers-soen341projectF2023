@@ -16,6 +16,10 @@ const Broker = ({ broker, onUpdate, onDelete }) => {
     onUpdate({ ...broker, email: e.target.value });
   };
 
+  const handleActiveListingsChange = (e) => {
+    onUpdate({ ...broker, activeListings: Number(e.target.value) });
+  };
+
   return (
     <div className="broker-item">
       <input
@@ -30,13 +34,20 @@ const Broker = ({ broker, onUpdate, onDelete }) => {
         value={broker.contact}
         onChange={handleContactChange}
       />
-      <input // New input for email
+      <input
         className="broker-input"
         placeholder="Email"
         value={broker.email}
         onChange={handleEmailChange}
       />
-      <button className="button" onClick={() => onDelete(broker._id)}>Delete</button>
+      <input
+        type="number"
+        className="broker-input"
+        placeholder="Active Listings"
+        value={broker.activeListings}
+        onChange={handleActiveListingsChange}
+      />
+      <button className="button" onClick={() => onDelete(broker)}>Delete</button>
     </div>
   );
 };
@@ -56,7 +67,7 @@ const BrokersList = () => {
   }, []);
 
   const handleAddBroker = () => {
-    const newBrokerData = { name: '', contact: '', email: '' };
+    const newBrokerData = { name: '', contact: '', email: '', activeListings: 0 };
     axios.post('/api/brokers', newBrokerData)
       .then(response => {
         setBrokers([...brokers, response.data]);
@@ -69,8 +80,8 @@ const BrokersList = () => {
   const handleUpdateBroker = (updatedBroker) => {
     axios.put(`/api/brokers/${updatedBroker._id}`, updatedBroker)
       .then(response => {
-        const newBrokers = brokers.map(broker =>
-          broker._id === updatedBroker._id ? updatedBroker : broker
+        const newBrokers = brokers.map(b =>
+          b._id === updatedBroker._id ? updatedBroker : b
         );
         setBrokers(newBrokers);
       })
@@ -79,14 +90,20 @@ const BrokersList = () => {
       });
   };
 
-  const handleDeleteBroker = (id) => {
-    axios.delete(`/api/brokers/${id}`)
-      .then(response => {
-        const newBrokers = brokers.filter(broker => broker._id !== id);
-        setBrokers(newBrokers);
+  const handleDeleteBroker = (broker) => {
+    if (broker.activeListings > 0) {
+      alert(`You cannot delete the Broker ${broker.name} with ${broker.activeListings} Active listings! .`);
+      return;
+    }
+
+    axios.delete(`/api/brokers/${broker._id}`)
+      .then(() => {
+        setBrokers(brokers.filter(b => b._id !== broker._id));
+        alert(`The broker deleted successfully .`);
       })
       .catch(error => {
         console.error('Error deleting broker:', error);
+        alert("There was an error deleting the broker.");
       });
   };
 

@@ -1,19 +1,17 @@
-const mongoose = require('mongoose'); 
+const mongoose = require('mongoose');
 const bcrypt = require('bcrypt');
 SALT_WORK_FACTOR = 10;
+const validUserTypes = ["broker", "buyer", "renter", "superadmin"];
 
 const userSchema = new mongoose.Schema({
   name: { type: String, required: true },
   email: { type: String, required: true, unique: true },
-  password: { type: String, required: true }
-  //   favoriteProperties: [
-  //     {
-  //       $ref: { type: String, required: true, enum: ['properties'] }, // Referencing property in the collection 'properties'
-  //       $id: { type: mongoose.Schema.Types.ObjectId, required: true }, 
-  //     },
-  //   ],
+  password: { type: String, required: true },
+  userType: { type: String, required: true, enum: validUserTypes },
+  favoriteProps: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Property' }],
 });
 
+//hash password before it is saved to database
 userSchema.pre('save', function (next) {
   const user = this;
 
@@ -35,22 +33,6 @@ userSchema.pre('save', function (next) {
   });
 });
 
-
-
-
-
-//prevent duplicate user
-// userSchema.static.isThisEmailInUse = async function (email) {
-//   if(!email) throw new Error('Invalid email');
-//   try {
-//     const user = await this.findOne({ email })
-//     if (user) return false
-//     return true;
-//   } catch (error) {
-//     console.log('error inside isthisemailUSer', error.message)
-//     return false
-//   }
-// }
 
 const User = mongoose.model('User', userSchema);
 

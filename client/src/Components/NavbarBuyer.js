@@ -1,42 +1,49 @@
+import React, { useContext } from "react";
+import { useNavigate } from "react-router-dom";
+import { UserContext } from '../context/userContext.js';
 import logo from './images/logo.png';
-import navIcon from './images/nav.png';
 import accountIcon from './images/test.png';
-import { Link } from '@mui/material';
-function Navbar(){
 
-    return (
-        
-        <nav data-testid = "navbar" className='Navbar'>
-            <div>
-            <a data-testid = "navbar-logo" href = "/">
-                <img  className = "Navbar-logo" src = {logo} alt = "logo" width = "100%" height = "100%"/> 
-            </a>
-            </div>
-            <a href = "/">
-                <p className='companyName'> 
-                    <h1>Pioneers</h1>
-                </p>    
-            </a>
-                <ul> 
-                    <a   href = "/searchBrokers">
-                        <li  className = 'Navlinks'> Search Brokers </li>
-                    </a>
-                    <a href = "/">
-                        <li className = 'Navlinks'> Buy </li>
-                    </a>
-                    
-                    <a href = "">
-                        <img className = "nav-icon" src = {navIcon} alt = "logo" width = "50%" height = "50%"/>
-                    </a>
-                    <li className='Navlinks'>
-                    <a href = "Login">
-                        <img className = "account-icon" src = {accountIcon} alt = "account icon"/>
-                    </a>    
-                    {/*<button><img class = "account-icon" src = {accountIcon} alt = "logo" width = "10%" height = "10%"/> sign-in </button> */}
-                </li>
-                </ul>
-        </nav>
-        
-    )
+function NavbarBuyer() {
+  const { logout, user } = useContext(UserContext);
+  const navigate = useNavigate();
+
+  const handleLogout = async () => {
+    await logout();
+    navigate("/login");
+  };
+
+  return (
+    <nav data-testid="navbar" className="Navbar">
+      <div>
+        <a data-testid="navbar-logo" href="/">
+          <img className="Navbar-logo" src={logo} alt="logo" width="100%" height="100%" />
+        </a>
+      </div>
+      <a href="/">
+        <p className="companyName">
+          <h1>Pioneers</h1>
+        </p>
+      </a>
+      <ul>
+        <a href="/searchBrokers">
+          <li className="Navlinks">Find Brokers</li>
+        </a>
+        <a href="/">
+          <li className="Navlinks">Properties</li>
+        </a>
+        {user ? (
+          <li className="Navlinks" onClick={handleLogout}>
+            Logout
+          </li>
+        ) : (
+          <a href="/login">
+            <li className="Navlinks">Login</li>
+          </a>
+        )}
+      </ul>
+    </nav>
+  );
 }
-export default Navbar;
+
+export default NavbarBuyer;
