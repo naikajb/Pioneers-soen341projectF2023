@@ -1,83 +1,51 @@
-import React, {Component} from 'react';
-import Grid from "@mui/material/Grid";
-import img from "./images/logo.png";
-import EditCard from './EditCard';
+import React, { useState, useEffect } from 'react';
+import axios from 'axios';
+import './styles/EditPropertyView.css'; // Make sure to create the corresponding CSS file
 
-const dummyListings = [
-  {
-    id: 1,
-    img: img,
-    price: "$599,999",
-    address: "1455 Blvd. De Maisonneuve Ouest",
-    bedroom: 3,
-    bathroom: 2,
-    description: "This is a description of the property. lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eius",
-    amenities: ["amenity1", "amenity2", "amenity3"]
-  },
-  {
-    id: 2,
-    img: img,
-    price: "$1,045,657",
-    address: "1455 Blvd. De Maisonneuve Ouest",
-    bedroom: 4,
-    bathroom: 3,
-    description: "This is a description of the property.lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eius",
-    amenities: ["amenity1", "amenity2", "amenity3"]
-  },
-  {
-    id: 3,
-    img: img,
-    price: "$234,567",
-    address: "1455 Blvd. De Maisonneuve Ouest",
-    bedroom: 3,
-    bathroom: 2,
-    description: "This is a description of the property.lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eius",
-    amenities: ["amenity1", "amenity2", "amenity3"]
-  },
-  {
-    id: 4,
-    img: img,
-    price: "$780,500",
-    address: "1455 Blvd. De Maisonneuve Ouest",
-    bedroom: 4,
-    bathroom: 3,
-    description: "This is a description of the property. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eius.Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eius",
-    amenities: ["amenity1", "amenity2", "amenity3"]
-  },
-  {
-    id: 5,
-    img: img,
-    price: "$450,000",
-    address: "1455 Blvd. De Maisonneuve Ouest",
-    bedroom: 3,
-    bathroom: 2,
-    description: "This is a description of the property. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eius.Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eius",
-    amenities: ["amenity1", "amenity2", "amenity3"]
-  },
-  {
-    id: 6,
-    img: img,
-    price: "$420,000",
-    address: "145 Blvd. De Maisonneuve Ouest",
-    bedroom: 3,
-    bathroom: 2,
-    description: "This is a description of the property. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eius.Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eius",
-    amenities: ["amenity1", "amenity2", "amenity3"]
-  }
-]
-
-function EditPropertyView({data}){
-
-    return(
-      <div className="propContainer">
-        <Grid container spacing={2} >
-            {dummyListings.map((data, index) => (
-              <EditCard key={index} data={data} />
-            ))}
-          </Grid>
+const PropertyCard = ({ property, onEdit }) => (
+  <div className="property-card">
+    <img src={property.image} alt="Property" className="property-image" />
+    <div className="property-info">
+      <h2 className="property-price">{property.price}</h2>
+      <p className="property-address">{property.address}</p>
+      <p className="property-details">{property.bedroom} Bedrooms</p>
+      <p className="property-details">{property.bathroom} Bathrooms</p>
+      <p className="property-description">{property.description}</p>
+      <div className="property-amenities">
+        {property.amenities.map((amenity, index) => (
+          <span key={index} className="amenity">{amenity}</span>
+        ))}
       </div>
-      
-    );
-}
+      <button className="edit-button" onClick={() => onEdit(property)}>EDIT THIS PROPERTY</button>
+    </div>
+  </div>
+);
+
+const EditPropertyView = () => {
+  const [properties, setProperties] = useState([]);
+
+  useEffect(() => {
+    axios.get('/api/properties')
+      .then(response => {
+        setProperties(response.data);
+      })
+      .catch(error => {
+        console.error('Error fetching properties:', error);
+      });
+  }, []);
+
+  const handleEdit = (property) => {
+    // Placeholder for edit functionality
+    console.log('Editing property:', property);
+  };
+
+  return (
+    <div className="properties-container">
+      {properties.map(property => (
+        <PropertyCard key={property._id} property={property} onEdit={handleEdit} />
+      ))}
+    </div>
+  );
+};
 
 export default EditPropertyView;

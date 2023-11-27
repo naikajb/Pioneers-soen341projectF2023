@@ -1,0 +1,64 @@
+.properties-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px;
+    justify-content: center;
+  }
+  
+  .property-card {
+    background-color: white;
+    width: 300px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    overflow: hidden;
+    margin-bottom: 16px;
+  }
+  
+  .property-image {
+    width: 100%;
+    height: auto;
+  }
+  
+  .property-info {
+    padding: 16px;
+  }
+  
+  .property-price {
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 8px;
+  }
+  
+  .property-address,
+  .property-details,
+  .property-description {
+    margin-bottom: 4px;
+  }
+  
+  .property-amenities {
+    margin: 8px 0;
+  }
+  
+  .amenity {
+    display: inline-block;
+    background-color: #efefef;
+    padding: 4px 8px;
+    margin-right: 4px;
+    border-radius: 4px;
+    font-size: 14px;
+  }
+  
+  .edit-button {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-top: 8px;
+  }
+  
+  .edit-button:hover {
+    background-color: #0056b3;
+  }
+  
