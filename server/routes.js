@@ -56,6 +56,23 @@ router.delete("/brokers/:id", async (req, res) => {
   }
 });
 
+// Define an endpoint to update an existing property
+router.put("/properties/:id", async (req, res) => {
+  const { id } = req.params;
+  const propertyUpdates = req.body;
+
+  try {
+    const updatedProperty = await Property.findByIdAndUpdate(id, propertyUpdates, { new: true });
+    if (!updatedProperty) {
+      return res.status(404).json({ message: 'Property not found' });
+    }
+    res.json(updatedProperty);
+  } catch (error) {
+    console.error("Error updating property:", error);
+    res.status(500).json({ message: 'Error updating property' });
+  }
+});
+
 // Define an endpoint to fetch properties
 router.get("/properties", async (req, res) => {
   const properties = await Property.find().exec();
