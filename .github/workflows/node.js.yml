@@ -8,7 +8,7 @@ env:
   SAUCE_ACCESS_KEY: ${{ secrets.SAUCE_ACCESS_KEY }}
 on:
   push:
-    branches: [ "SeifSprint4" ]
+    branches: [ "Linter" ]
   pull_request:
     branches: [ "main" ]
 
