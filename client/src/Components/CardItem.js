@@ -1,126 +1,122 @@
-import React, { useState, useContext, useEffect } from "react";
-import Card from "@mui/material/Card";
-import CardActions from "@mui/material/CardActions";
-import CardContent from "@mui/material/CardContent";
-import CardMedia from "@mui/material/CardMedia";
-import Button from "@mui/material/Button";
-import Typography from "@mui/material/Typography";
-import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
-import FavoriteIcon from "@mui/icons-material/Favorite";
-import { useNavigate } from "react-router-dom";
-import "../Components/styles/App.css";
-import { UserContext } from '../context/userContext.js';
-import axios from 'axios';
+import React, { useState, useContext, useEffect } from 'react'
+import Card from '@mui/material/Card'
+import CardActions from '@mui/material/CardActions'
+import CardContent from '@mui/material/CardContent'
+import CardMedia from '@mui/material/CardMedia'
+import Button from '@mui/material/Button'
+import Typography from '@mui/material/Typography'
+import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder'
+import FavoriteIcon from '@mui/icons-material/Favorite'
+import { useNavigate } from 'react-router-dom'
+import '../Components/styles/App.css'
+import { UserContext } from '../context/userContext.js'
+import axios from 'axios'
 
-function CardItem({ data, toggleFavorite }) {
-  const { user, setUser } = useContext(UserContext);
-  const [isFavorite, setIsFavorite] = useState(false);
-  const navigate = useNavigate();
+function CardItem ({ data, toggleFavorite }) {
+  const { user, setUser } = useContext(UserContext)
+  const [isFavorite, setIsFavorite] = useState(false)
+  const navigate = useNavigate()
 
   useEffect(() => {
     const fetchFavorites = async () => {
-        try {
-            if (!user || !user.id) {
-                // Reset isFavorite to false when there is no logged-in user
-                setIsFavorite(false);
-                return;
-            }
-
-            // Fetch user favorites
-            const response = await axios.get(`/api/favorites/${user.id}`);
-            const { favoriteProps } = response.data;
-
-            // Check if the property is in the user's favorites
-            setIsFavorite(favoriteProps.includes(data._id));
-        } catch (error) {
-            console.error('Error fetching favorites:', error);
+      try {
+        if (!user || !user.id) {
+          // Reset isFavorite to false when there is no logged-in user
+          setIsFavorite(false)
+          return
         }
-    };
 
-    fetchFavorites();
-}, [user, data._id]);
+        // Fetch user favorites
+        const response = await axios.get(`/api/favorites/${user.id}`)
+        const { favoriteProps } = response.data
 
+        // Check if the property is in the user's favorites
+        setIsFavorite(favoriteProps.includes(data._id))
+      } catch (error) {
+        console.error('Error fetching favorites:', error)
+      }
+    }
+
+    fetchFavorites()
+  }, [user, data._id])
 
   const handleCardClick = () => {
-    navigate("/listing", {
+    navigate('/listing', {
       state: {
         id: data._id
-      },
-    });
-  };
+      }
+    })
+  }
 
   const handleFavoriteClick = async (event) => {
-    event.stopPropagation();
+    event.stopPropagation()
 
     if (!user) {
       // Redirect to login if the user is not logged in
-      navigate('/login');
-      return;
+      navigate('/login')
+      return
     }
 
     try {
       // Toggle favorite on the server
       const response = await axios.post(`/api/${isFavorite ? 'removeFavorite' : 'addFavorite'}`, {
         userId: user.id,
-        propertyId: data._id,
-      });
+        propertyId: data._id
+      })
 
       if (response.status === 200) {
         // Toggle favorite in the local state
-        setIsFavorite(!isFavorite);
+        setIsFavorite(!isFavorite)
 
         // Pass the data.id to the parent component (CardGrid)
-       toggleFavorite(data._id);
+        toggleFavorite(data._id)
 
         // Update user context with the new user data
-        const profileResponse = await axios.get('/api/profile');
-        const profileData = profileResponse.data;
-        setUser(profileData);
+        const profileResponse = await axios.get('/api/profile')
+        const profileData = profileResponse.data
+        setUser(profileData)
       }
     } catch (error) {
-      console.error('Error toggling favorite:', error);
+      console.error('Error toggling favorite:', error)
     }
-  };
+  }
 
   return (
-    <Card onClick={handleCardClick} className="propertyItem">
-      <CardMedia component="img" alt="Property Image" height="140" src={data.image} />
-      <CardContent className="priceAddressContent">
-        <Typography gutterBottom variant="h5" component="div" fontWeight="bold">
+    <Card onClick={handleCardClick} className='propertyItem'>
+      <CardMedia component='img' alt='Property Image' height='140' src={data.image} />
+      <CardContent className='priceAddressContent'>
+        <Typography gutterBottom variant='h5' component='div' fontWeight='bold'>
           {data.price}
         </Typography>
-        <Typography variant="body2" color="text.secondary">
+        <Typography variant='body2' color='text.secondary'>
           {data.address}
         </Typography>
       </CardContent>
-      <CardActions sx={{ justifyContent: "space-between" }}>
+      <CardActions sx={{ justifyContent: 'space-between' }}>
         <div>
-          <Button className="features" size="small">
+          <Button className='features' size='small'>
             {data.bedroom} Bedrooms
           </Button>
-          <Button className="features" size="small">
+          <Button className='features' size='small'>
             {data.bathroom} Bathrooms
           </Button>
         </div>
 
-        {user && user.type === "buyer" && (
+        {user && user.type === 'buyer' && (
           <div onClick={handleFavoriteClick}>
-            {isFavorite ? (
-              <FavoriteIcon color="error" className="favorite" />
-            ) : (
-              <FavoriteBorderIcon color="error" />
-            )}
+            {isFavorite
+              ? (
+                <FavoriteIcon color='error' className='favorite' />
+                )
+              : (
+                <FavoriteBorderIcon color='error' />
+                )}
           </div>
         )}
 
       </CardActions>
     </Card>
-  );
+  )
 }
 
-export default CardItem;
-
-
-
-
-
+export default CardItem

@@ -36,6 +36,10 @@ jobs:
       run: |
         cd client
         npm test
+    - name: Linting
+      run: |
+        cd client
+        npm run lint
     - name: start app
       run: |
         cd client

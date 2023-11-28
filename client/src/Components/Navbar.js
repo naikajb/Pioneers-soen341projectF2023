@@ -45,40 +45,37 @@
 
 // export default Navbar;
 
-import React, { useContext } from 'react';
-import { UserContext } from '../context/userContext';
-import NavbarBuyer from './NavbarBuyer';
-import NavbarBroker from './NavbarBroker';
-import NavbarAdmin from './NavbarAdmin';
-import logo from './images/logo.png';
+import React, { useContext } from 'react'
+import { UserContext } from '../context/userContext'
+import NavbarBuyer from './NavbarBuyer'
+import NavbarBroker from './NavbarBroker'
+import NavbarAdmin from './NavbarAdmin'
 
-
-function Navbar() {
-  const { user } = useContext(UserContext);
+function Navbar () {
+  const { user } = useContext(UserContext)
 
   // Add conditions based on user type
   if (user) {
     switch (user.type) {
       case 'buyer':
-        return <NavbarBuyer />;
+        return <NavbarBuyer />
       case 'broker':
-        return <NavbarBroker />;
+        return <NavbarBroker />
       case 'admin':
-        return <NavbarAdmin />;
+        return <NavbarAdmin />
       // Add more cases as needed
       default:
-        return null;
+        return null
     }
   }
 
   // Render a default navbar for unauthenticated users
-  return <NavbarBuyer />;
+  return <NavbarBuyer />
 }
 
 // Create a DefaultNavbar component for unauthenticated users
 // function DefaultNavbar() {
-   
-  
+
 //     return (
 //       <nav data-testid="navbar" className="Navbar">
 //         <div>
@@ -101,11 +98,10 @@ function Navbar() {
 //             <a href="/login">
 //               <li className="Navlinks">Login</li>
 //             </a>
-         
+
 //         </ul>
 //       </nav>
 //     );
 // }
 
-export default Navbar;
-
+export default Navbar
