@@ -260,6 +260,16 @@ router.get("/favorites/:userId", async (req, res) => {
   }
 });
 
+// Define an endpoint to fetch offers
+router.get("/offers", async (req, res) => {
+  try {
+    const offers = await Offers.find();
+    res.json(offers);
+  } catch (error) {
+    console.error("Error fetching offers:", error);
+    res.status(500).json({ status: 'error', error: 'Internal server error' });
+  }
+});
 
 //Endpoint for offer management
 router.post("/makeOffers", async (req, res) => {
